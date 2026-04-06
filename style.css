@@ -1,0 +1,369 @@
+/* ===== ШРИФТЫ ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;700&display=swap');
+
+@font-face {
+    font-family: 'Arsenal SC';
+    src: url('fonts/ArsenalSC-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* ===== ЦВЕТА ===== */
+:root {
+    --color-text-primary: #153A61;
+    --color-cta-bg: #3379CF;
+    --color-cta-hover: #F59C1C;
+}
+
+/* ===== СБРОС И БАЗОВЫЕ СТИЛИ ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+    color: var(--color-text-primary);
+}
+
+/* ===== МОДУЛЬНАЯ СЕТКА 1920px ===== */
+.container {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 8.33vw;
+}
+
+/* Grid для 12 колонок */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.25rem; /* 20px */
+}
+
+/* ===== ТИПОГРАФИКА ===== */
+
+/* Заголовок героя: Arsenal SC Bold 128px = 8rem */
+.hero-title {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 8rem;
+    line-height: auto;
+}
+
+/* Подзаголовок: Текст 2 — Inter Light 20px = 1.25rem */
+.hero-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1.25rem;
+    line-height: auto;
+    position: relative;
+    top: -1.5rem;
+}
+
+/* Выделение в тексте 2: Arsenal SC Bold 20px = 1.25rem */
+.highlight-2 {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+/* ===== ХЕДЕР ===== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.logo {
+    align-self: flex-end;
+}
+
+.logo img {
+    height: auto;
+    display: block;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 2.25rem;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.25rem;
+}
+
+.nav-link {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: var(--color-cta-bg);
+}
+
+.nav-link:active {
+    color: var(--color-text-primary);
+}
+
+/* CTA кнопка "Игра на знание города" */
+.nav-link--cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 15.375rem; /* 246px */
+    height: 3.25rem; /* 52px */
+    background-color: var(--color-cta-bg);
+    color: #ffffff;
+    border-radius: 0; /* Если нужны скругления — уточни */
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-link--cta:hover {
+    background-color: var(--color-cta-hover);
+    color: #ffffff;
+}
+
+.nav-link--cta:active {
+    background-color: var(--color-text-primary);
+}
+
+/* ===== HERO СЕКЦИЯ ===== */
+
+/* Отступ от меню до блока: 16px = 1rem */
+.main {
+    margin-top: 1rem;
+}
+
+.hero-title {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 8rem;
+    line-height: auto;
+    color: var(--color-text-primary);
+}
+
+.hero-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1.25rem;
+    line-height: auto;
+    position: relative;
+    top: -1.5rem;
+    color: var(--color-text-primary);
+}
+
+.hero-header {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+/* Отступ от заголовка до видео: 64px = 4rem */
+.hero-video-wrapper {
+    margin-top: 4rem;
+    width: 100%;
+}
+
+.hero-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: none;
+    outline: none;
+    pointer-events: none;
+}
+
+/* ===== БЛОК "ОБ УЛЬЯНОВСКЕ" ===== */
+
+/* Расстояние от блока до блока: 160px = 10rem */
+.about {
+    margin-top: 10rem;
+    margin-bottom: 11.5rem; /* 184px — от блока до футера */
+}
+
+/* Заголовок 2: Arsenal SC Bold 64px = 4rem */
+.section-title {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 4rem;
+    line-height: auto;
+    color: var(--color-text-primary);
+}
+
+/* Отступ от заголовка до плашки: 64px = 4rem */
+.about-card {
+    margin-top: 4rem;
+    grid-column: 1 / span 7;
+    background-color: var(--color-cta-bg);
+    padding: 2.25rem; /* 36px */
+}
+
+/* Статистика — колонки 9 и 11 */
+.stat-group {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem; /* 28px */
+    width: 7.1875rem; /* 115px — ширина одной колонки */
+    align-items: center;
+    align-self: center;
+}
+
+.stat-group-9 { grid-column: 9; }
+.stat-group-11 { grid-column: 11; }
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+}
+
+.stat-icon {
+    width: auto;
+    height: auto;
+}
+
+.stat-text {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+    white-space: nowrap;
+}
+
+/* Текст 1: Inter Light 24px = 1.5rem, белый */
+.about-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1.5rem;
+    line-height: auto;
+    color: #ffffff;
+}
+
+/* Кнопки в синем блоке */
+.about-buttons {
+    margin-top: 2.25rem; /* 36px */
+    display: flex;
+    flex-direction: row;
+    gap: 4.5rem; /* 72px */
+}
+
+.about-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem; /* 16px между текстом и стрелкой */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.about-btn span {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem; /* 24px — Выделение в тексте 1 */
+    color: #ffffff;
+    transition: color 0.2s ease;
+}
+
+.arrow-icon {
+    transition: all 0.2s ease;
+}
+
+.arrow-fill {
+    fill: #ffffff;
+    transition: fill 0.2s ease;
+}
+
+.arrow-stroke {
+    stroke: #153A61;
+    transition: stroke 0.2s ease;
+}
+
+/* Hover — жёлтый */
+.about-btn:hover span {
+    color: var(--color-cta-hover);
+}
+
+.about-btn:hover .arrow-fill {
+    fill: var(--color-cta-hover);
+}
+
+/* Active — тёмно-синий */
+.about-btn:active span {
+    color: var(--color-text-primary);
+}
+
+.about-btn:active .arrow-fill {
+    fill: var(--color-text-primary);
+}
+
+.about-btn:active .arrow-stroke {
+    stroke: #ffffff;
+}
+
+/* ===== ФУТЕР ===== */
+.footer {
+    background-color: var(--color-cta-bg);
+    padding: 2.5rem 0; /* 40px */
+    width: 100%;
+}
+
+.footer-content {
+    color: #ffffff;
+}
+
+.footer-copyright {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+.footer-description {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1.25rem;
+    color: #ffffff;
+    margin-top: 0.5rem;
+}
+
+.footer-resources-title {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-top: 3rem; /* 48px */
+}
+
+.footer-resources {
+    margin-top: 0.625rem; /* 10px */
+    margin-bottom: 3.75rem; /* 60px */
+}
+
+.footer-resource {
+    grid-column: span 2;
+}
+
+.footer-resource img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
