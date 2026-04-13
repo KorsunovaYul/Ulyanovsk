@@ -1,0 +1,1069 @@
+/* ===== ГЛАВНАЯ СТРАНИЦА — index.css ===== */
+
+/* ===== HERO СЕКЦИЯ ===== */
+
+/* Отступ от меню до блока: 16px = 1rem + высота хедера */
+.hero-title {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 7rem;
+    line-height: auto;
+    color: var(--color-text-primary);
+}
+
+.hero-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1.25rem;
+    line-height: auto;
+    position: relative;
+    top: -1.5rem;
+    color: var(--color-text-primary);
+}
+
+.hero-header {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+/* Отступ от заголовка до видео: 64px = 4rem */
+.hero-video-wrapper {
+    margin-top: 4rem;
+    width: 100%;
+}
+
+.hero-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: none;
+    outline: none;
+    pointer-events: none;
+}
+
+/* ===== БЛОК "КАРТА ЦЕНТРА ГОРОДА" ===== */
+
+/* Отступ от hero до карты: 10rem = 160px */
+.city-map {
+    margin-top: 10rem;
+    margin-bottom: 4rem; /* 64px от заголовка до карты */
+}
+
+/* Отступ от заголовка до карты: 4rem = 64px */
+.city-map .section-title {
+    margin-bottom: 4rem;
+}
+
+.map-container {
+    position: relative;
+    width: 100%;
+}
+
+.map-bg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.map-markers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.map-marker {
+    position: absolute;
+    cursor: pointer;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease;
+    width: fit-content;
+    transform: scale(0.35);
+    z-index: 1;
+}
+
+.map-marker:hover,
+.map-marker.active {
+	transform: scale(0.33) translateY(-2rem);
+	z-index: 100;
+}
+
+/* Адаптивный scale для маркеров */
+@media (max-width: 1600px) {
+    .map-marker {
+        transform: scale(0.28);
+    }
+    .map-marker:hover,
+    .map-marker.active {
+        transform: scale(0.26) translateY(-2rem);
+    }
+}
+
+@media (max-width: 1300px) {
+    .map-marker {
+        transform: scale(0.23);
+    }
+    .map-marker:hover,
+    .map-marker.active {
+        transform: scale(0.21) translateY(-2rem);
+    }
+}
+
+.marker-icon {
+    display: block;
+    transform-origin: center bottom;
+    transition: filter 0.2s ease;
+}
+
+.marker-label {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 3.75rem; /* 60px — увеличил в 3 раза */
+    color: var(--color-text-primary);
+    margin-top: 0.5rem;
+    text-align: center;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+    background-color: #ffffff;
+    padding: 0.0625rem 0.25rem;
+    border-radius: 0;
+}
+
+.map-marker:hover .marker-label {
+    color: var(--color-cta-hover);
+}
+
+/* Попап при клике */
+.marker-popup {
+    display: none;
+    position: absolute;
+    top: calc(100% + 1.5rem);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffffff;
+    padding: 3rem 3.75rem; /* 48px 60px — увеличил в 3 раза */
+    border-radius: 0; /* без закруглений */
+    box-shadow: 0 0.75rem 2.25rem rgba(21, 58, 97, 0.15);
+    min-width: 37.5rem; /* 600px — увеличил в 3 раза */
+    max-width: 56.25rem; /* 900px — увеличил в 3 раза */
+    z-index: 999;
+}
+
+.marker-popup.active {
+    display: block;
+}
+
+.marker-popup-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 3.75rem; /* 60px — увеличил в 3 раза */
+    color: var(--color-text-primary);
+    line-height: 1.5;
+    text-align: left;
+}
+
+/* ===== ИНТЕРАКТИВНАЯ КАРТА — ПОЗИЦИИ МАРКЕРОВ ===== */
+/* Меняй bottom/right здесь — все маркеры в одном месте */
+/* Позиции в % чтобы масштабировались вместе с картой */
+
+.map-marker--30-let-pobedy {
+    /* 30 лет Великой Победы — низ-право */
+	bottom: -18%;
+    right: 27%;
+}
+
+.map-marker--balalaika {
+    /* Балаалйка — верх-право */
+	bottom: 49%;
+    right: 57%;
+}
+
+.map-marker--yahjting {
+    /* Яхтинг — низ-лево */
+    bottom: -8%;
+    right: -3%;
+}
+
+.map-marker--venec {
+    /* Гостинница «Венец» — низ-право */
+	bottom: 10%;
+    right: 1%;
+}
+
+.map-marker--lenin {
+    /* Ленинский мемориал — верх-лево */
+	bottom: 56%;
+    right: 8%;
+}
+
+.map-marker--goncharov {
+    /* Музей И.А. Гончарова — низ-право */
+	bottom: 12%;
+    right: 35%;
+}
+
+.map-marker--bukva-yo {
+    /* Памятник букве «Ё» — середина */
+	bottom: 22%;
+    right: 18%;
+}
+
+.map-marker--simbircit {
+    /* Симбирцитовая Зала — верх-право */
+	bottom: 72%;
+    right: 40%;
+}
+
+.map-marker--sobor {
+    /* Спасско-Вознесенский собор — низ-очень право */
+	bottom: -35%;
+    right: 60%;
+}
+
+.map-marker--art-museum {
+    /* Художественный музей — середина-лево */
+    bottom: 18%;
+    right: 12%;
+
+}
+
+.map-marker--church-mary {
+    /* Церковь Св. Марии — низ-очень право */
+	bottom: 8%;
+    right: 55%;
+}
+
+/* Кнопка "Маршруты" справа внизу после карты */
+.city-map-more {
+    margin-top: 2rem; /* 32px */
+    display: flex;
+    justify-content: flex-end;
+}
+
+.city-map-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.125rem; /* 18px */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.city-map-more-btn span {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem; /* 24px — Выделение 1 */
+    color: var(--color-text-primary); /* тёмно-синий */
+    transition: color 0.2s ease;
+}
+
+.city-map-more-btn .arrow-fill {
+    fill: var(--color-cta-bg); /* синий */
+    transition: fill 0.2s ease;
+}
+
+.city-map-more-btn .arrow-stroke {
+    stroke: var(--color-text-primary); /* тёмно-синий */
+    transition: stroke 0.2s ease;
+}
+
+/* Hover — жёлтый только треугольник */
+.city-map-more-btn:hover span {
+    color: var(--color-cta-hover);
+}
+
+.city-map-more-btn:hover .arrow-fill {
+    fill: var(--color-cta-hover);
+}
+
+/* Active — треугольник тёмно-синий, контур жёлтый */
+.city-map-more-btn:active span {
+    color: var(--color-text-primary);
+}
+
+.city-map-more-btn:active .arrow-fill {
+    fill: var(--color-text-primary);
+}
+
+.city-map-more-btn:active .arrow-stroke {
+    stroke: var(--color-cta-hover);
+}
+
+/* Адаптация позиций маркеров для экранов меньше 1920px */
+@media (max-width: 1600px) {
+    .map-marker--30-let-pobedy {
+        bottom: -28%;
+        right: 20%;
+    }
+    .map-marker--balalaika {
+        bottom: 39%;
+        right: 50%;
+    }
+    .map-marker--yahjting {
+        bottom: -18%;
+        right: -10%;
+    }
+    .map-marker--venec {
+        bottom: 0%;
+        right: 5%;
+    }
+    .map-marker--lenin {
+        bottom: 46%;
+        right: 12%;
+    }
+    .map-marker--goncharov {
+        bottom: 2%;
+        right: 28%;
+    }
+    .map-marker--bukva-yo {
+        bottom: 12%;
+        right: 18%;
+    }
+    .map-marker--simbircit {
+        bottom: 62%;
+        right: 40%;
+    }
+    .map-marker--sobor {
+        bottom: -45%;
+        right: 55%;
+    }
+    .map-marker--art-museum {
+        bottom: 8%;
+        right: 12%;
+    }
+    .map-marker--church-mary {
+        bottom: -2%;
+        right: 48%;
+    }
+}
+
+@media (max-width: 1600px) {
+    .map-marker {
+        transform: scale(0.26);
+    }
+    .map-marker:hover,
+    .map-marker.active {
+        transform: scale(0.24) translateY(-2rem);
+    }
+}
+
+@media (max-width: 1300px) {
+    .map-marker--30-let-pobedy {
+        bottom: -40%;
+        right: 27%;
+    }
+    .map-marker--balalaika {
+        bottom: 25%;
+        right: 57%;
+    }
+    .map-marker--yahjting {
+        bottom: -30%;
+        right: -3%;
+    }
+    .map-marker--venec {
+        bottom: -12%;
+        right: 1%;
+    }
+    .map-marker--lenin {
+        bottom: 32%;
+        right: 8%;
+    }
+    .map-marker--goncharov {
+        bottom: -10%;
+        right: 35%;
+    }
+    .map-marker--bukva-yo {
+        bottom: 0%;
+        right: 18%;
+    }
+    .map-marker--simbircit {
+        bottom: 45%;
+        right: 40%;
+    }
+    .map-marker--sobor {
+        bottom: -60%;
+        right: 60%;
+    }
+    .map-marker--art-museum {
+        bottom: -5%;
+        right: 12%;
+    }
+    .map-marker--church-mary {
+        bottom: -15%;
+        right: 55%;
+    }
+}
+
+/* ===== БЛОК "ОБ УЛЬЯНОВСКЕ" ===== */
+
+/* Расстояние от блока до блока: 160px = 10rem */
+.about {
+    margin-top: 10rem;
+    margin-bottom: 11.5rem; /* 184px — от блока до футера */
+}
+
+/* Заголовок 2: Arsenal SC Bold 64px = 4rem */
+.section-title {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 4rem;
+    line-height: auto;
+    color: var(--color-text-primary);
+}
+
+/* Отступ от заголовка до плашки: 64px = 4rem */
+.about-card {
+    margin-top: 4rem;
+    grid-column: 1 / span 7;
+    background-color: var(--color-cta-bg);
+    padding: 2.25rem; /* 36px */
+}
+
+/* Статистика — колонки 9 и 11 */
+.stat-group {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem; /* 28px */
+    width: 7.1875rem; /* 115px — ширина одной колонки */
+    align-items: center;
+    align-self: center;
+}
+
+.stat-group-9 { grid-column: 9; }
+.stat-group-11 {
+    grid-column: 11;
+    margin-top: 6rem; /* побольше отступ сверху */
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+    transition: transform 0.2s ease;
+    cursor: default;
+}
+
+.stat-item:hover {
+    transform: translateY(-0.25rem); /* 4px — чуть поднимается */
+}
+
+.stat-icon {
+    width: auto;
+    height: auto;
+}
+
+.stat-text {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+    white-space: nowrap;
+}
+
+/* Текст 1: Inter Light 24px = 1.5rem, белый */
+.about-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1.5rem;
+    line-height: auto;
+    color: #ffffff;
+}
+
+/* Кнопки в синем блоке */
+.about-buttons {
+    margin-top: 2.25rem; /* 36px */
+    display: flex;
+    flex-direction: row;
+    gap: 4.5rem; /* 72px */
+}
+
+.about-btn-wrapper {
+    display: flex;
+    align-items: center; /* выровнять по высоте по центру */
+}
+
+.about-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem; /* 16px между текстом и стрелкой */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.about-btn span {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem; /* 24px — Выделение в тексте 1 */
+    color: #ffffff;
+    transition: color 0.2s ease;
+}
+
+/* Hover — жёлтый */
+.about-btn:hover span {
+    color: var(--color-cta-hover);
+}
+
+.about-btn:hover .arrow-fill {
+    fill: var(--color-cta-hover);
+}
+
+/* Active — тёмно-синий */
+.about-btn:active span {
+    color: var(--color-text-primary);
+}
+
+.about-btn:active .arrow-fill {
+    fill: var(--color-text-primary);
+}
+
+.about-btn:active .arrow-stroke {
+    stroke: #ffffff;
+}
+
+/* ===== БЛОК "СУВЕНИРЫ" ===== */
+
+/* Отступ от блока до блока: 160px = 10rem */
+.souvenirs {
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+}
+
+/* Отступ от заголовка до элементов: 64px = 4rem */
+.souvenirs .section-title {
+    margin-bottom: 4rem;
+}
+
+.souvenir-item {
+    grid-column: span 3;
+    display: flex;
+    flex-direction: column;
+}
+
+.souvenir-img-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+}
+
+.souvenir-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.souvenir-item:hover .souvenir-img {
+    transform: scale(1.1);
+}
+
+.souvenir-img-placeholder {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #e0e0e0;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.souvenir-item:hover .souvenir-img-placeholder {
+    transform: scale(1.1);
+}
+
+/* Отступ от картинки до инфо-блока: 8px = 0.5rem */
+.souvenir-info {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Текст 1: Inter Light 24px = 1.5rem */
+.souvenir-name {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1.5rem;
+    color: var(--color-text-primary);
+}
+
+/* Выделение в тексте 1: Arsenal SC Bold 24px = 1.5rem */
+.souvenir-price {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--color-text-primary);
+}
+
+/* Кнопка "ещё больше сувениров" */
+.souvenirs-more {
+    margin-top: 2rem; /* 32px */
+    display: flex;
+    justify-content: flex-end;
+}
+
+.souvenirs-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.125rem; /* 18px */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.souvenirs-more-btn span {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem; /* 24px — Выделение 1 */
+    color: var(--color-text-primary); /* тёмно-синий */
+    transition: color 0.2s ease;
+}
+
+.souvenirs-more-btn .arrow-fill {
+    fill: var(--color-cta-bg); /* синий */
+    transition: fill 0.2s ease;
+}
+
+.souvenirs-more-btn .arrow-stroke {
+    stroke: var(--color-text-primary); /* тёмно-синий */
+    transition: stroke 0.2s ease;
+}
+
+/* Hover — жёлтый только треугольник */
+.souvenirs-more-btn:hover span {
+    color: var(--color-cta-hover);
+}
+
+.souvenirs-more-btn:hover .arrow-fill {
+    fill: var(--color-cta-hover);
+}
+
+/* stroke при hover НЕ меняется — остаётся тёмно-синим */
+
+/* Active — треугольник тёмно-синий, контур жёлтый */
+.souvenirs-more-btn:active span {
+    color: var(--color-text-primary);
+}
+
+.souvenirs-more-btn:active .arrow-fill {
+    fill: var(--color-text-primary);
+}
+
+.souvenirs-more-btn:active .arrow-stroke {
+    stroke: var(--color-cta-hover);
+}
+
+/* ===== ФУТЕР ===== */
+.footer {
+    background-color: var(--color-cta-bg);
+    padding: 2.5rem 0; /* 40px */
+    width: 100%;
+}
+
+.footer-content {
+    color: #ffffff;
+}
+
+.footer-copyright {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+.footer-description {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1.25rem;
+    color: #ffffff;
+    margin-top: 0.5rem;
+}
+
+.footer-resources-title {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-top: 3rem; /* 48px */
+}
+
+.footer-resources {
+    margin-top: 0.625rem; /* 10px */
+    margin-bottom: 3.75rem; /* 60px */
+}
+
+.footer-resources-track {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.25rem; /* 20px */
+}
+
+.footer-resource {
+    grid-column: span 2;
+    overflow: hidden;
+}
+
+/* Скрываем дубликаты ресурсов на десктопе */
+.footer-resource:nth-child(n+7) {
+    display: none;
+}
+
+.footer-resource img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.footer-resource:hover img {
+    transform: scale(1.1);
+}
+
+/* На десктопе скрываем мобильное видео и мобильную статистику */
+@media (min-width: 769px) {
+    .hero-video--mobile {
+        display: none !important;
+    }
+    .stat-mobile {
+        display: none;
+    }
+}
+
+/* ===== МОБИЛЬНАЯ ВЕРСИЯ — ГЛАВНАЯ ===== */
+@media (max-width: 768px) {
+    /* Hero — заголовок 48px, line-height 48px, подзаголовок со 2-й колонки */
+    .hero-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem; /* 4px */
+    }
+
+    .hero-title {
+        font-size: 3rem; /* 48px */
+        line-height: 3rem; /* 48px */
+    }
+
+    .hero-subtitle {
+        font-size: 1rem; /* 16px */
+        top: 0;
+        margin-left: 5.625rem; /* 90px — начало со 2-й колонки (16px поле + 74px колонка) */
+    }
+
+    /* Видео — вертикальное для мобилки */
+    .hero-video--desktop {
+        display: none;
+    }
+
+    .hero-video--mobile {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .hero-video-wrapper {
+        margin-top: 2rem; /* 32px */
+    }
+
+    /* Заголовки секций */
+    .section-title {
+        font-size: 2rem; /* 32px */
+    }
+
+    /* Карта — горизонтальный скролл внутри контейнера */
+    .city-map {
+        margin-top: 4rem; /* 64px */
+        margin-bottom: 2rem;
+    }
+
+    .city-map .section-title {
+        margin-bottom: 2rem; /* 32px */
+    }
+
+    .map-container {
+        width: 100%;
+        height: 30rem; /* 480px */
+        overflow-x: auto;
+        overflow-y: hidden;
+        position: relative;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Стилизация скроллбара */
+    .map-container::-webkit-scrollbar {
+        height: 0.25rem; /* 4px */
+    }
+
+    .map-container::-webkit-scrollbar-track {
+        background: #e0e0e0;
+    }
+
+    .map-container::-webkit-scrollbar-thumb {
+        background: var(--color-cta-bg);
+    }
+
+    .map-bg {
+        width: auto;
+        height: 100%;
+        min-width: 300%; /* шире контейнера для скролла */
+        display: block;
+    }
+
+    .map-markers {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 300%; /* как у .map-bg */
+        height: 100%;
+    }
+
+    .map-marker {
+        transform: scale(0.22);
+    }
+
+    .map-marker:hover,
+    .map-marker.active {
+        transform: scale(0.2) translateY(-1rem);
+    }
+
+    /* Мобильные позиции маркеров — все за пределами видимой зоны справа, появляются при скролле */
+    .map-marker--30-let-pobedy {
+        bottom: 30%;
+        right: -115%;
+    }
+    .map-marker--balalaika {
+        bottom: 30%;
+        right: -85%;
+    }
+    .map-marker--yahjting {
+        bottom: 30%;
+        right: -120%;
+    }
+    .map-marker--venec {
+        bottom: 30%;
+        right: -105%;
+    }
+    .map-marker--lenin {
+        bottom: 30%;
+        right: -112%;
+    }
+    .map-marker--goncharov {
+        bottom: 30%;
+        right: -95%;
+    }
+    .map-marker--bukva-yo {
+        bottom: 30%;
+        right: -102%;
+    }
+    .map-marker--simbircit {
+        bottom: 30%;
+        right: -80%;
+    }
+    .map-marker--sobor {
+        bottom: 30%;
+        right: -75%;
+    }
+    .map-marker--art-museum {
+        bottom: 30%;
+        right: -110%;
+    }
+    .map-marker--church-mary {
+        bottom: 30%;
+        right: -90%;
+    }
+
+    .marker-label {
+        font-size: 2.5rem; /* 40px */
+    }
+
+    .marker-popup {
+        min-width: 15rem; /* 240px */
+        max-width: 18rem; /* 288px */
+        padding: 1.5rem 2rem;
+    }
+
+    .marker-popup-text {
+        font-size: 1rem; /* 16px */
+    }
+
+    .city-map-more {
+        margin-top: 2rem; /* 32px */
+    }
+
+    .city-map-more-btn span {
+        font-size: 1.25rem; /* 20px */
+    }
+
+    /* Мобильная статистика — 4 колонки перед плашкой */
+    .stat-mobile {
+        display: grid;
+        grid-template-columns: repeat(4, 4.625rem);
+        gap: 1rem; /* 16px */
+        justify-content: center;
+        margin-bottom: 1rem; /* 16px — внешний отступ до плашки */
+    }
+
+    .stat-mobile-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.5rem; /* 8px */
+        width: 4.125rem; /* 66px */
+    }
+
+    .stat-mobile-item .stat-icon {
+        width: 4.125rem; /* 66px */
+        height: 4.125rem; /* 66px — фиксированная высота */
+        object-fit: contain;
+        display: block;
+    }
+
+    .stat-mobile-item .stat-text {
+        font-family: 'Arsenal SC', sans-serif;
+        font-weight: bold;
+        font-size: 0.9375rem; /* 15px — выделение в тексте 2 */
+        color: var(--color-text-primary);
+        line-height: 1.3;
+        white-space: normal;
+    }
+
+    /* О городе */
+    .about {
+        margin-top: 4rem; /* 64px */
+        margin-bottom: 4rem;
+    }
+
+    .about .section-title {
+        margin-bottom: 2rem; /* 32px */
+    }
+
+    /* Скрываем десктопную статистику на мобилке */
+    .stat-group {
+        display: none;
+    }
+
+    .about-card {
+        grid-column: 1 / -1;
+        padding: 1rem; /* 16px — внутренние отступы */
+        margin: 0; /* снаружи отступов нет */
+        margin-top: 0;
+    }
+
+    .about-text {
+        font-size: 1rem; /* 16px */
+    }
+
+    .about-buttons {
+        margin-top: 1.5rem; /* 24px */
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .about-btn span {
+        font-size: 1.25rem; /* 20px */
+    }
+
+    .stat-group {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+        margin-top: 2rem;
+    }
+
+    .stat-group-9,
+    .stat-group-11 {
+        grid-column: auto;
+        margin-top: 0;
+    }
+
+    .stat-text {
+        font-size: 1rem; /* 16px */
+        white-space: normal;
+    }
+
+    /* Сувениры */
+    .souvenirs {
+        margin-top: 4rem; /* 64px */
+        margin-bottom: 4rem;
+    }
+
+    .souvenirs .section-title {
+        margin-bottom: 2rem; /* 32px */
+    }
+
+    .souvenir-item {
+        grid-column: span 2; /* 2 из 4 колонок */
+    }
+
+    .souvenir-name,
+    .souvenir-price {
+        font-size: 1rem; /* 16px */
+    }
+
+    .souvenirs-more {
+        margin-top: 1.5rem; /* 24px */
+    }
+
+    .souvenirs-more-btn span {
+        font-size: 1.25rem; /* 20px */
+    }
+
+    /* Футер */
+    .footer {
+        padding: 1.5rem 0; /* 24px */
+    }
+
+    .footer-copyright {
+        font-size: 1rem; /* 16px */
+    }
+
+    .footer-description {
+        font-size: 0.875rem; /* 14px */
+    }
+
+    .footer-resources-title {
+        font-size: 1.25rem; /* 20px */
+        margin-top: 1.5rem; /* 24px */
+    }
+
+    .footer-resources {
+        margin-bottom: 2rem; /* 32px */
+        overflow: hidden;
+    }
+
+    /* Бегущая строка ресурсов */
+    .footer-resources-track {
+        display: flex;
+        gap: 1rem; /* 16px */
+        animation: marquee 20s linear infinite;
+        width: max-content;
+    }
+
+    .footer-resources-track:hover {
+        animation-play-state: paused;
+    }
+
+    @keyframes marquee {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+    .footer-resource {
+        grid-column: auto;
+        flex-shrink: 0;
+        width: 10rem; /* 160px */
+    }
+
+    .footer-resource:nth-child(n+7) {
+        display: block;
+    }
+}

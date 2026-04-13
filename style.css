@@ -80,15 +80,44 @@ body {
     align-items: flex-end;
     padding-top: 1rem;
     padding-bottom: 1rem;
+    position: fixed;
+    top: 0;
+    left: 8.33vw;
+    right: 8.33vw;
+    background-color: #ffffff;
+    z-index: 1000;
+    transition: transform 0.4s ease;
+}
+
+.header.scrolled {
+    transform: translateY(-3rem); /* при скролле — хедер подтягивается вверх */
 }
 
 .logo {
     align-self: flex-end;
+    overflow: hidden;
 }
 
-.logo img {
-    height: auto;
+.logo a {
     display: block;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 6rem; /* 96px */
+    width: auto;
+    display: block;
+    transition: all 0.4s ease;
+    /* Показываем весь логотип целиком */
+    clip-path: inset(0 0 0 0);
+    transform: translateX(0);
+}
+
+/* Скролнутое состояние — обрезаем знак (левые ~28%), текст сдвигаем влево */
+.logo.scrolled .logo-img {
+    clip-path: inset(0 0 0 28%);
+    transform: translateX(-3.8rem); /* сдвигаем текст влево на место знака (~60px) */
+    height: 6rem; /* фиксируем высоту */
 }
 
 .nav {
@@ -143,146 +172,21 @@ body {
     background-color: var(--color-text-primary);
 }
 
-/* ===== HERO СЕКЦИЯ ===== */
-
-/* Отступ от меню до блока: 16px = 1rem */
+/* ===== БАЗОВЫЕ ОТСТУПЫ ===== */
 .main {
-    margin-top: 1rem;
+    margin-top: 8rem; /* отступ чтобы контент не был под фиксированным хедером */
 }
 
-.hero-title {
-    font-family: 'Arsenal SC', sans-serif;
-    font-weight: bold;
-    font-size: 8rem;
-    line-height: auto;
-    color: var(--color-text-primary);
+/* ===== БУРГЕР — СКРЫТ НА ДЕСКТОПЕ ===== */
+.burger {
+    display: none;
 }
 
-.hero-subtitle {
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    font-size: 1.25rem;
-    line-height: auto;
-    position: relative;
-    top: -1.5rem;
-    color: var(--color-text-primary);
+.nav-overlay {
+    display: none;
 }
 
-.hero-header {
-    display: flex;
-    align-items: flex-end;
-    gap: 1rem;
-}
-
-/* Отступ от заголовка до видео: 64px = 4rem */
-.hero-video-wrapper {
-    margin-top: 4rem;
-    width: 100%;
-}
-
-.hero-video {
-    width: 100%;
-    height: auto;
-    display: block;
-    border: none;
-    outline: none;
-    pointer-events: none;
-}
-
-/* ===== БЛОК "ОБ УЛЬЯНОВСКЕ" ===== */
-
-/* Расстояние от блока до блока: 160px = 10rem */
-.about {
-    margin-top: 10rem;
-    margin-bottom: 11.5rem; /* 184px — от блока до футера */
-}
-
-/* Заголовок 2: Arsenal SC Bold 64px = 4rem */
-.section-title {
-    font-family: 'Arsenal SC', sans-serif;
-    font-weight: bold;
-    font-size: 4rem;
-    line-height: auto;
-    color: var(--color-text-primary);
-}
-
-/* Отступ от заголовка до плашки: 64px = 4rem */
-.about-card {
-    margin-top: 4rem;
-    grid-column: 1 / span 7;
-    background-color: var(--color-cta-bg);
-    padding: 2.25rem; /* 36px */
-}
-
-/* Статистика — колонки 9 и 11 */
-.stat-group {
-    margin-top: 4rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.75rem; /* 28px */
-    width: 7.1875rem; /* 115px — ширина одной колонки */
-    align-items: center;
-    align-self: center;
-}
-
-.stat-group-9 { grid-column: 9; }
-.stat-group-11 { grid-column: 11; }
-
-.stat-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 0.75rem;
-}
-
-.stat-icon {
-    width: auto;
-    height: auto;
-}
-
-.stat-text {
-    font-family: 'Arsenal SC', sans-serif;
-    font-weight: bold;
-    font-size: 1.5rem;
-    color: var(--color-text-primary);
-    line-height: 1.3;
-    white-space: nowrap;
-}
-
-/* Текст 1: Inter Light 24px = 1.5rem, белый */
-.about-text {
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    font-size: 1.5rem;
-    line-height: auto;
-    color: #ffffff;
-}
-
-/* Кнопки в синем блоке */
-.about-buttons {
-    margin-top: 2.25rem; /* 36px */
-    display: flex;
-    flex-direction: row;
-    gap: 4.5rem; /* 72px */
-}
-
-.about-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 1rem; /* 16px между текстом и стрелкой */
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.about-btn span {
-    font-family: 'Arsenal SC', sans-serif;
-    font-weight: bold;
-    font-size: 1.5rem; /* 24px — Выделение в тексте 1 */
-    color: #ffffff;
-    transition: color 0.2s ease;
-}
-
+/* ===== СТРЕЛКА (общий компонент) ===== */
 .arrow-icon {
     transition: all 0.2s ease;
 }
@@ -297,73 +201,173 @@ body {
     transition: stroke 0.2s ease;
 }
 
-/* Hover — жёлтый */
-.about-btn:hover span {
-    color: var(--color-cta-hover);
-}
+/* ===== МОБИЛЬНАЯ ВЕРСИЯ (375px) ===== */
+@media (max-width: 768px) {
+    /* Сетка 4 колонки: поля 1rem (16px), колонки 4.625rem (74px), gap 1rem (16px) */
+    .container {
+        padding: 0 1rem; /* 16px */
+    }
 
-.about-btn:hover .arrow-fill {
-    fill: var(--color-cta-hover);
-}
+    .grid {
+        grid-template-columns: repeat(4, 4.625rem);
+        gap: 1rem; /* 16px */
+        justify-content: center;
+    }
 
-/* Active — тёмно-синий */
-.about-btn:active span {
-    color: var(--color-text-primary);
-}
+    /* Хедер — лого 162px + бургер, без скролл-эффекта */
+    .header {
+        left: 0;
+        right: 0;
+        padding: 0.75rem 1rem 1rem 1rem !important; /* 12px 16px 16px */
+        align-items: flex-end;
+    }
 
-.about-btn:active .arrow-fill {
-    fill: var(--color-text-primary);
-}
+    .header.scrolled {
+        transform: none !important;
+        padding-top: 0.75rem !important;
+        padding-bottom: 1rem !important;
+    }
 
-.about-btn:active .arrow-stroke {
-    stroke: #ffffff;
-}
+    .logo {
+        flex: 0 0 auto;
+    }
 
-/* ===== ФУТЕР ===== */
-.footer {
-    background-color: var(--color-cta-bg);
-    padding: 2.5rem 0; /* 40px */
-    width: 100%;
-}
+    .logo-img {
+        height: auto;
+        width: 10.125rem; /* 162px */
+    }
 
-.footer-content {
-    color: #ffffff;
-}
+    .logo.scrolled .logo-img {
+        clip-path: none !important;
+        transform: none !important;
+        width: 10.125rem;
+        height: auto !important;
+    }
 
-.footer-copyright {
-    font-family: 'Arsenal SC', sans-serif;
-    font-weight: bold;
-    font-size: 1.5rem;
-    color: #ffffff;
-}
+    /* Бургер-кнопка */
+    .burger {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3125rem; /* 5px */
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1100;
+        margin-left: auto;
+        margin-bottom: 1rem; /* 16px */
+        width: 2.3125rem; /* 37px */
+        height: 1rem; /* 16px */
+        align-self: flex-end;
+        justify-content: center;
+    }
 
-.footer-description {
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    font-size: 1.25rem;
-    color: #ffffff;
-    margin-top: 0.5rem;
-}
+    .burger span {
+        display: block;
+        width: 100%;
+        height: 0.125rem; /* 2px */
+        background-color: var(--color-text-primary);
+        transition: all 0.3s ease;
+    }
 
-.footer-resources-title {
-    font-family: 'Arsenal SC', sans-serif;
-    font-weight: bold;
-    font-size: 1.5rem;
-    color: #ffffff;
-    margin-top: 3rem; /* 48px */
-}
+    .burger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(0.3125rem, 0.3125rem);
+    }
 
-.footer-resources {
-    margin-top: 0.625rem; /* 10px */
-    margin-bottom: 3.75rem; /* 60px */
-}
+    .burger.active span:nth-child(2) {
+        opacity: 0;
+    }
 
-.footer-resource {
-    grid-column: span 2;
-}
+    .burger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(0.3125rem, -0.3125rem);
+    }
 
-.footer-resource img {
-    width: 100%;
-    height: auto;
-    display: block;
+    /* Шторка меню — полноэкранная страница */
+    .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #ffffff;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 5rem 1rem 2rem 1rem; /* отступ сверху под хедер */
+        gap: 0;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        z-index: 1050;
+        overflow-y: auto;
+    }
+
+    .nav.active {
+        transform: translateX(0);
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+    }
+
+    .nav-link {
+        font-family: 'Arsenal SC', sans-serif;
+        font-weight: bold;
+        font-size: 1.5rem; /* 24px */
+        color: var(--color-text-primary);
+        text-decoration: none;
+        padding: 0.75rem 0; /* 12px сверху/снизу */
+        border-bottom: 0.125rem solid var(--color-cta-bg); /* 2px синяя линия */
+        display: block;
+        width: 100%;
+    }
+
+    .nav-link:last-child {
+        border-bottom: none;
+    }
+
+    .nav-link--cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+        min-width: 12rem; /* 192px */
+        height: 3rem; /* 48px */
+        background-color: var(--color-cta-bg);
+        color: #ffffff;
+        border-radius: 0;
+        font-family: 'Arsenal SC', sans-serif;
+        font-weight: bold;
+        font-size: 1rem; /* 16px */
+        text-decoration: none;
+        margin-top: 2rem; /* 32px */
+        margin-left: auto; /* справа */
+        padding: 0 1.5rem;
+        transition: background-color 0.2s ease;
+    }
+
+    .nav-link--cta:hover {
+        background-color: var(--color-cta-hover);
+    }
+
+    .nav-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(21, 58, 97, 0.5);
+        z-index: 1040;
+    }
+
+    .nav-overlay.active {
+        display: block;
+    }
+
+    /* Основной контент — отступ побольше от меню */
+    .main {
+        margin-top: 7rem;
+    }
 }
