@@ -22,6 +22,11 @@
     color: var(--color-text-primary);
     line-height: 1.1;
     margin-bottom: 3rem;
+    transition: opacity 0.3s ease;
+}
+.game-title.hidden {
+    opacity: 0;
+    pointer-events: none;
 }
 
 /* ══════════════════════════════════

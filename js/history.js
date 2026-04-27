@@ -203,15 +203,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, { passive: false });
 
-    // Глобальный скролл — когда дошли до футера, скрываем таймлайн
+    // Глобальный скролл — скрываем подпись «История» при небольшом скролле,
+    // таймлайн — когда дошли до футера
     window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY > 60;
+        subtitleFixed.classList.toggle('hidden', scrolled);
+
         const footer = document.querySelector('.footer');
         if (footer) {
-            const footerRect = footer.getBoundingClientRect();
-            const footerVisible = footerRect.top < window.innerHeight;
+            const footerVisible = footer.getBoundingClientRect().top < window.innerHeight;
             timeline.classList.toggle('hidden', footerVisible);
             mobTimelineEl && mobTimelineEl.classList.toggle('hidden', footerVisible);
-            subtitleFixed.classList.toggle('hidden', footerVisible);
         }
     });
 
