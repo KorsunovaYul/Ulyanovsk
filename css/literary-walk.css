@@ -271,28 +271,33 @@
     margin-top: 1rem;
 }
 
-/* "Для всех" — кол. 4 текстового блока (= кол. 11 сетки), выравнивание вправо */
+/* Контейнер «Для всех / Бесплатно» — тот же принцип, что .rp-block__pricing:
+   label занимает 1fr, цена — auto. Позиционируется как единый блок. */
+.rp-block__pricing--free {
+    grid-column: 2 / 6; /* cols 2–5 внутри 5-колончатого .rp-block__text */
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 1.25rem;
+    margin-top: 4rem;
+    align-items: baseline;
+}
+
+/* "Для всех" — левая ячейка, Inter Light, выравнивание вправо */
 .rp-block__audience {
-    grid-column: 4 / 5;
     font-family: 'Inter', sans-serif;
     font-weight: 300;
-    font-size: 1.25rem; /* 20px */
+    font-size: 1.25rem;
     color: var(--color-text-primary);
     text-align: right;
     white-space: nowrap;
-    margin-top: 4rem; /* 64px */
-    align-self: center;
 }
 
-/* "Бесплатно" — кол. 5 текстового блока (= кол. 12 сетки), Arsenal SC Bold, синий */
+/* "Бесплатно" — правая ячейка, Arsenal SC Bold, синий */
 .rp-block__price {
-    grid-column: 5 / 6;
     font-family: 'Arsenal SC', sans-serif;
     font-weight: bold;
-    font-size: 1.5rem; /* 24px */
-    color: var(--color-cta-bg); /* #3379CF */
-    margin-top: 4rem; /* 64px */
-    align-self: center;
+    font-size: 1.5rem;
+    color: var(--color-cta-bg);
 }
 
 /* ===== БЛОК «СЭНДВИЧ»: фото (1–2) | текст (5–8) | фото (11–12) ===== */
@@ -617,8 +622,9 @@
     /* Типографика текстовых блоков */
     .rp-block__time-label { font-size: 1.125rem; }
     .rp-block__desc       { font-size: 1.125rem; margin-top: 1rem; }
-    .rp-block__audience   { grid-column: 2 / 4; margin-top: 2rem; font-size: 1.125rem; text-align: right; }
-    .rp-block__price      { grid-column: 4 / 5; margin-top: 2rem; font-size: 1.25rem; }
+    .rp-block__pricing--free { grid-column: 1 / 5; margin-top: 2rem; }
+    .rp-block__audience { font-size: 1.125rem; }
+    .rp-block__price    { font-size: 1.25rem; }
 
     /* Прайс */
     .rp-block__pricing { grid-column: 1 / 5; margin-top: 2rem; }
@@ -705,18 +711,10 @@
     .rp-block__desc { font-size: 1rem; margin-top: 1rem; }
     .rp-block__desc + .rp-block__desc { margin-top: 0.5rem; }
 
-    /* "Для всех" — колонки 2–3 из 4, "Бесплатно" — колонка 4 */
-    .rp-block__audience {
-        grid-column: 2 / 4;
-        margin-top: 2rem;
-        font-size: 1rem;
-        text-align: right;
-    }
-    .rp-block__price {
-        grid-column: 4 / 5;
-        margin-top: 2rem;
-        font-size: 1.25rem;
-    }
+    /* "Для всех / Бесплатно" — контейнер на все 4 колонки */
+    .rp-block__pricing--free { grid-column: 1 / 5; margin-top: 2rem; column-gap: 1rem; }
+    .rp-block__audience { font-size: 1rem; }
+    .rp-block__price    { font-size: 1.25rem; }
 
     /* ---- БЛОК 3 (текст слева, фото справа) — мобилка ---- */
     .rp-block__grid--reverse {
