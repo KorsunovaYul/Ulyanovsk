@@ -1,0 +1,273 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Об Ульяновске</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/about.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/logo2.svg" alt="Логотип" class="logo-img">
+                </a>
+            </div>
+            <button class="burger" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav">
+                <div class="nav-links">
+                    <a href="routes.html" class="nav-link">Маршруты</a>
+                    <a href="souvenirs.html" class="nav-link">Сувениры</a>
+                    <a href="about.html" class="nav-link nav-link--active">Об Ульяновске</a>
+                    <a href="history.html" class="nav-link">История</a>
+                    <a href="#" class="nav-link">Брендбук</a>
+                </div>
+                <a href="game.html" class="nav-link nav-link--cta">Игра на знание города</a>
+            </nav>
+            <div class="nav-overlay"></div>
+        </header>
+    </div>
+
+    <main class="about-main">
+        <div class="container">
+
+            <h1 class="about-page-title">Об Ульяновске</h1>
+
+            <div class="about-grid">
+
+                <!-- Левая колонка: Погода + Часовой пояс (колонки 1–3) -->
+                <div class="about-left">
+
+                    <!-- Погода -->
+                    <div class="about-section">
+                        <h3 class="about-block-title">Погода</h3>
+                        <div class="weather-card" id="weather-card">
+                            <div class="weather-icon-wrap" id="weather-icon" aria-hidden="true"></div>
+                            <div class="weather-data">
+                                <div class="weather-temp" id="weather-temp">…</div>
+                                <div class="weather-wind" id="weather-wind">…</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Часовой пояс -->
+                    <div class="about-section">
+                        <h3 class="about-block-title">Часовой пояс</h3>
+                        <div class="tz-card">
+                            <div class="tz-header">
+                                <span class="tz-date" id="tz-date"></span>
+                                <span class="tz-utc">UTC+4:00</span>
+                            </div>
+                            <div class="tz-time" id="tz-time">--:--</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Правая колонка: Географическое положение (колонки 5–12) -->
+                <div class="about-right">
+                    <h3 class="about-block-title">Географическое положение</h3>
+                    <div class="geo-map">
+                        <object data="img/Map_of_Russia.svg" type="image/svg+xml" class="geo-map-img" aria-label="Карта России с отмеченным Ульяновском"></object>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ══ Известные люди ══ -->
+            <section class="people-section">
+                <h2 class="people-title">Известные люди</h2>
+
+                <div class="people-grid" id="people-grid">
+
+                    <div class="person-card active" data-index="0">
+                        <div class="person-img-wrap">
+                            <img src="img/famous-people/lenin.png" alt="Ленин В.И." class="person-img">
+                        </div>
+                        <span class="person-name">Ленин В.И.</span>
+                    </div>
+
+                    <div class="person-card" data-index="1">
+                        <div class="person-img-wrap">
+                            <img src="img/famous-people/zhukov.png" alt="Сергей Жуков" class="person-img">
+                        </div>
+                        <span class="person-name">Сергей Жуков</span>
+                    </div>
+
+                    <div class="person-card" data-index="2">
+                        <div class="person-img-wrap">
+                            <img src="img/famous-people/goncharov.png" alt="И.А. Гончаров" class="person-img">
+                        </div>
+                        <span class="person-name">И.А. Гончаров</span>
+                    </div>
+
+                    <div class="person-card" data-index="3">
+                        <div class="person-img-wrap">
+                            <img src="img/famous-people/karamzin.png" alt="Н.М. Карамзин" class="person-img">
+                        </div>
+                        <span class="person-name">Н.М. Карамзин</span>
+                    </div>
+
+                    <div class="person-card" data-index="4">
+                        <div class="person-img-wrap">
+                            <img src="img/famous-people/safronov.png" alt="Н. С. Сафронов" class="person-img">
+                        </div>
+                        <span class="person-name">Н. С. Сафронов</span>
+                    </div>
+
+                    <div class="person-card" data-index="5">
+                        <div class="person-img-wrap">
+                            <img src="img/famous-people/plastov.png" alt="А. А. Пластов" class="person-img">
+                        </div>
+                        <span class="person-name">А. А. Пластов</span>
+                    </div>
+
+                </div><!-- /people-grid -->
+
+                <!-- Синяя панель с биографией -->
+                <div class="people-bio" id="people-bio">
+                    <p class="people-bio-text" id="people-bio-text">
+                        Владимир Ильич Ульянов (Ленин) (1870–1924) — революционер, основатель и первый руководитель Советского государства. Родился и провел юность в Симбирске. Его деятельность коренным образом изменила ход мировой истории XX века. В 1924 году город был переименован в Ульяновск в его честь.
+                    </p>
+                </div>
+
+            </section><!-- /people-section -->
+
+        <!-- ══ Символы города ══ -->
+        <section class="symbols-section">
+            <h2 class="symbols-title">Символы города</h2>
+
+            <div class="symbols-nav">
+                <!-- Левая стрелка: тот же SVG что и правая, зеркалим через CSS scaleX(-1) -->
+                <button class="symbols-arrow symbols-arrow--prev" id="sym-prev" aria-label="Предыдущие символы">
+                    <svg viewBox="0 0 71 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path class="arrow-fill" d="M70 23.0386L34.75 42.5241L34.75 3.553L70 23.0386Z"/>
+                        <path class="arrow-stroke" d="M0 21.5386H35.5M35.5 21.5386H70L35.5 2.53857V21.5386Z" stroke-width="3"/>
+                    </svg>
+                </button>
+                <!-- Правая стрелка -->
+                <button class="symbols-arrow symbols-arrow--next" id="sym-next" aria-label="Следующие символы">
+                    <svg viewBox="0 0 71 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path class="arrow-fill" d="M70 23.0386L34.75 42.5241L34.75 3.553L70 23.0386Z"/>
+                        <path class="arrow-stroke" d="M0 21.5386H35.5M35.5 21.5386H70L35.5 2.53857V21.5386Z" stroke-width="3"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="symbols-track-wrap">
+                <div class="symbols-track" id="symbols-track">
+
+                    <!-- ═══ Страница 1: УАЗ (3) + Симбирцит (3) + Родина динозавров (6) ═══ -->
+                    <div class="symbols-page">
+
+                        <div class="symbol-card symbol-card--3">
+                            <div class="symbol-img-wrap">
+                                <img src="img/city-symbols/uaz.png" alt="УАЗ" class="symbol-img">
+                            </div>
+                            <div class="symbol-info">
+                                <h3 class="symbol-name">УАЗ</h3>
+                                <p class="symbol-desc">— легендарный внедорожник «буханка», рождённый в Ульяновске, покоряет планету своей неукротимой мощью вездеходов. Силуэт и протектор шин на знаке воплощают дух бездорожья и ульяновской стойкости.</p>
+                            </div>
+                        </div>
+
+                        <div class="symbol-card symbol-card--3">
+                            <div class="symbol-img-wrap">
+                                <img src="img/city-symbols/Group 670.png" alt="Симбирцит" class="symbol-img">
+                            </div>
+                            <div class="symbol-info">
+                                <h3 class="symbol-name">Симбирцит</h3>
+                                <p class="symbol-desc">— янтарный кальцит 120 млн лет с аммонитами и ихтиозаврами, добытый в Ульяновской земле. Этот полудрагоценный камень 1985 года — ювелирный талисман Симбирска.</p>
+                            </div>
+                        </div>
+
+                        <div class="symbol-card symbol-card--6">
+                            <div class="symbol-img-wrap">
+                                <img src="img/city-symbols/homeland-dinosaurs.png" alt="Родина динозавров" class="symbol-img">
+                            </div>
+                            <div class="symbol-info">
+                                <h3 class="symbol-name">Родина динозавров</h3>
+                                <p class="symbol-desc">— Ундоровский музей на костях юрского периода, где Volgatitan simbirskiensis, 40-метровый гигант 130 млн лет назад, носит имя Волги и Симбирска. Здесь наука оживает среди окаменелостей весом 100 тонн.</p>
+                            </div>
+                        </div>
+
+                    </div><!-- /symbols-page 1 -->
+
+                    <!-- ═══ Страница 2: Обломов (3) + Родина «Ё» (3) + Родина самолётов (6) ═══ -->
+                    <div class="symbols-page">
+
+                        <div class="symbol-card symbol-card--3">
+                            <div class="symbol-img-wrap">
+                                <img src="img/city-symbols/oblomov.png" alt="Обломов" class="symbol-img">
+                            </div>
+                            <div class="symbol-info">
+                                <h3 class="symbol-name">Обломов</h3>
+                                <p class="symbol-desc">— симбирский соня из романа Гончаровского, где город стал «громадной сонной деревней» с Обломовским фестивалем и диваном. Атмосфера Ульяновска вдохновила лень как искусство.</p>
+                            </div>
+                        </div>
+
+                        <div class="symbol-card symbol-card--3">
+                            <div class="symbol-img-wrap">
+                                <img src="img/city-symbols/homeland-yo.png" alt='Родина «Ё»' class="symbol-img">
+                            </div>
+                            <div class="symbol-info">
+                                <h3 class="symbol-name">Родина «Ё»</h3>
+                                <p class="symbol-desc">— Симбирск подарил русский алфавит букве благодаря Карамзину, сменившему «io» на «ё» в стихах 1797 года. Эта искра гения навсегда оживила язык, и сегодня она сияет как гордость города.</p>
+                            </div>
+                        </div>
+
+                        <div class="symbol-card symbol-card--6">
+                            <div class="symbol-img-wrap">
+                                <img src="img/city-symbols/homeland-planes.png" alt="Родина самолётов" class="symbol-img">
+                            </div>
+                            <div class="symbol-info">
+                                <h3 class="symbol-name">Родина самолётов</h3>
+                                <p class="symbol-desc">— «Авиастар» куёт Ил-76 и «Русланы», стратегические крылья России для неба и космоса. Ульяновск взлетает на рекордных грузах, обслуживая Ан-124 для глобальных миссий.</p>
+                            </div>
+                        </div>
+
+                    </div><!-- /symbols-page 2 -->
+
+                </div><!-- /symbols-track -->
+            </div><!-- /symbols-track-wrap -->
+        </section><!-- /symbols-section -->
+
+        </div>
+    </main>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-copyright">© 2025,&nbsp;Неофициальный сайт-гид по&nbsp;Ульяновску. С&nbsp;любовью к&nbsp;деталям.</p>
+                <p class="footer-description">Сайт создан, чтобы показать город с&nbsp;новой стороны: через его дороги, историю и&nbsp;людей.</p>
+                <h3 class="footer-resources-title">Официальные ресурсы города</h3>
+                <div class="footer-resources">
+                    <div class="footer-resources-track">
+                        <div class="footer-resource"><a href="https://ulgov.gosuslugi.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 241.png" alt="Ресурс 1"></a></div>
+                        <div class="footer-resource"><a href="https://ulgov.gosuslugi.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 242.png" alt="Ресурс 2"></a></div>
+                        <div class="footer-resource"><a href="https://tic73.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 243.png" alt="Ресурс 3"></a></div>
+                        <div class="footer-resource"><a href="https://visit-ulyanovsk.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 244.png" alt="Ресурс 4"></a></div>
+                        <div class="footer-resource"><a href="https://visit-ulyanovsk.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 245.png" alt="Ресурс 5"></a></div>
+                        <div class="footer-resource"><a href="https://leninmemorial.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 246.png" alt="Ресурс 6"></a></div>
+                        <div class="footer-resource"><a href="https://ulgov.gosuslugi.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 241.png" alt="Ресурс 1"></a></div>
+                        <div class="footer-resource"><a href="https://ulgov.gosuslugi.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 242.png" alt="Ресурс 2"></a></div>
+                        <div class="footer-resource"><a href="https://tic73.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 243.png" alt="Ресурс 3"></a></div>
+                        <div class="footer-resource"><a href="https://visit-ulyanovsk.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 244.png" alt="Ресурс 4"></a></div>
+                        <div class="footer-resource"><a href="https://visit-ulyanovsk.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 245.png" alt="Ресурс 5"></a></div>
+                        <div class="footer-resource"><a href="https://leninmemorial.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 246.png" alt="Ресурс 6"></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/about.js"></script>
+</body>
+</html>

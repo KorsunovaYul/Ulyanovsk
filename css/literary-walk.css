@@ -1,0 +1,787 @@
+/* ===== СТРАНИЦА: ЛИТЕРАТУРНАЯ ПРОГУЛКА ===== */
+
+/* ===== БЛОК 1: ПОСАДОЧНЫЙ ===== */
+.rp-landing {
+    margin-bottom: 11.5rem; /* 184px — от блока до футера */
+}
+
+/* Заголовок 1 — 96px */
+.rp-title {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 6rem;
+    line-height: 1;
+    color: var(--color-text-primary);
+    margin-bottom: 4rem; /* 64px — от заголовка до блока */
+}
+
+/* Двухколоночный блок: 6 + 6 */
+.rp-intro {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.25rem; /* 20px */
+    align-items: stretch;
+}
+
+/* ===== ЛЕВАЯ ЧАСТЬ ===== */
+.rp-info {
+    grid-column: span 6;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1.25rem;
+    align-content: start;
+}
+
+/* Заголовок 3 — 48px */
+.rp-subtitle {
+    grid-column: 1 / -1; /* все 6 колонок */
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 3rem;
+    line-height: 3.125rem; /* 50px */
+    color: var(--color-text-primary);
+}
+
+/* ===== СТАТИСТИКА (время, путь, бюджет) ===== */
+.rp-stats {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 1.5rem; /* 24px между блоками */
+    margin-top: 2rem; /* 32px */
+}
+
+.rp-stat {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem; /* 10px между иконкой и текстом */
+}
+
+.rp-stat__icon {
+    height: 3.125rem; /* 50px */
+    width: auto;
+    flex-shrink: 0;
+}
+
+/* Иконка времени — синий #3379CF */
+.rp-stat__icon--time {
+    filter: brightness(0) saturate(100%) invert(44%) sepia(78%) saturate(500%) hue-rotate(185deg) brightness(97%) contrast(95%);
+}
+
+/* Иконка протяжённости — зелёный #3AA697 */
+.rp-stat__icon--distance {
+    filter: brightness(0) saturate(100%) invert(58%) sepia(40%) saturate(450%) hue-rotate(128deg) brightness(92%) contrast(88%);
+}
+
+/* Иконка бюджета — жёлтый #F59C1C */
+.rp-stat__icon--budget {
+    filter: brightness(0) saturate(100%) invert(66%) sepia(80%) saturate(700%) hue-rotate(5deg) brightness(105%) contrast(95%);
+}
+
+.rp-stat__text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+
+/* Выделение в тексте 3 — Inter Bold 20px */
+.rp-stat__label,
+.rp-stat__value {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem; /* 20px */
+    color: var(--color-text-primary);
+    line-height: 1.3;
+}
+
+/* ===== НАЧАЛО / КОНЕЦ ===== */
+.rp-points {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1.25rem;
+    margin-top: 6.875rem; /* 110px */
+}
+
+.rp-point:first-child {
+    grid-column: 1 / 3; /* колонки 1–2 */
+}
+
+.rp-point:last-child {
+    grid-column: 3 / 5; /* колонки 3–4 */
+}
+
+/* Выделение в тексте 2 — Arsenal SC Bold 20px */
+.rp-point__label {
+    display: block;
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 1.25rem; /* 20px */
+    color: var(--color-text-primary);
+    text-transform: lowercase;
+}
+
+/* Текст 2 — Inter Light 20px */
+.rp-point__text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1.25rem; /* 20px */
+    color: var(--color-text-primary);
+    margin-top: 0.25rem;
+}
+
+/* ===== ОПИСАНИЕ ===== */
+/* span 5 — ширина 5 колонок; margin-top: auto прижимает к низу фото */
+.rp-description {
+    grid-column: span 5;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1.25rem; /* 20px — Текст 2 */
+    line-height: 1.5;
+    color: var(--color-text-primary);
+    margin-top: auto;
+}
+
+/* ===== ПРАВАЯ ЧАСТЬ: ФОТО ===== */
+.rp-image {
+    grid-column: span 6;
+    position: relative;
+    overflow: hidden;
+}
+
+.rp-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: bottom;
+    display: block;
+}
+
+/* ===== БЛОК 2 И ДАЛЕЕ: ТОЧКИ МАРШРУТА ===== */
+.rp-block {
+    margin-top: 10rem; /* 160px — от блока до блока */
+    margin-bottom: 11.5rem; /* 184px — от последнего блока до футера */
+}
+
+/* Заголовок 2 — 64px, line-height 59px */
+.rp-block__title {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 4rem;
+    line-height: 3.6875rem;
+    color: var(--color-text-primary);
+}
+
+/* Адрес — Inter Light 20px, сразу под заголовком */
+.rp-block__address {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1.25rem;
+    color: var(--color-text-primary);
+    margin-top: 0.5rem;
+}
+
+/* 12-колончатая сетка, фото не обрезаются, текст по центру */
+.rp-block__grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.25rem;
+    margin-top: 4rem; /* 64px */
+    align-items: center; /* текст по центру относительно фото */
+}
+
+/* Фото 1: колонки 1–3 */
+.rp-block__photo--a {
+    grid-column: 1 / 4;
+}
+
+/* Фото 2: колонки 4–6 */
+.rp-block__photo--b {
+    grid-column: 4 / 7;
+}
+
+.rp-block__photo--a img,
+.rp-block__photo--b img {
+    width: 100%;
+    height: auto; /* не обрезаем */
+    display: block;
+}
+
+/* Одиночное фото: колонки 1–6 */
+.rp-block__photo--single {
+    grid-column: 1 / 7;
+}
+
+.rp-block__photo--single img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Пустая колонка 7 */
+.rp-block__spacer {
+    grid-column: 7 / 8;
+}
+
+/* Текстовый блок: колонки 8–12 */
+.rp-block__text {
+    grid-column: 8 / 13;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1.25rem;
+    align-content: start;
+}
+
+/* Строка с иконкой времени — на всю ширину текстового блока */
+.rp-block__time-row {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+}
+
+.rp-block__time-icon {
+    height: 2.375rem; /* 38px */
+    width: auto;
+    flex-shrink: 0;
+    filter: brightness(0) saturate(100%) invert(44%) sepia(78%) saturate(500%) hue-rotate(185deg) brightness(97%) contrast(95%);
+}
+
+/* "10–15 мин" — Выделение в тексте 3: Inter Bold 20px синий */
+.rp-block__time-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--color-cta-bg); /* #3379CF */
+}
+
+/* Описание — Inter Light 20px, на всю ширину блока */
+.rp-block__desc {
+    grid-column: 1 / -1;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--color-text-primary);
+    margin-top: 2rem; /* 32px */
+}
+
+.rp-block__desc + .rp-block__desc {
+    margin-top: 1rem;
+}
+
+/* "Для всех" — кол. 4 текстового блока (= кол. 11 сетки), выравнивание вправо */
+.rp-block__audience {
+    grid-column: 4 / 5;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1.25rem; /* 20px */
+    color: var(--color-text-primary);
+    text-align: right;
+    white-space: nowrap;
+    margin-top: 4rem; /* 64px */
+    align-self: center;
+}
+
+/* "Бесплатно" — кол. 5 текстового блока (= кол. 12 сетки), Arsenal SC Bold, синий */
+.rp-block__price {
+    grid-column: 5 / 6;
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem; /* 24px */
+    color: var(--color-cta-bg); /* #3379CF */
+    margin-top: 4rem; /* 64px */
+    align-self: center;
+}
+
+/* ===== БЛОК «СЭНДВИЧ»: фото (1–2) | текст (5–8) | фото (11–12) ===== */
+.rp-block__photo--left-narrow  { grid-column: 1 / 4; }   /* 3 колонки */
+.rp-block__photo--right-narrow { grid-column: 10 / 13; } /* 3 колонки */
+
+.rp-block__photo--left-narrow img,
+.rp-block__photo--right-narrow img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Текст по центру — 4 колонки (5–8) */
+.rp-block__text--center {
+    grid-column: 5 / 9;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem;
+    align-content: start;
+    align-self: center;
+}
+
+/* Прайс внутри центрального блока — на всю его ширину */
+.rp-block__pricing--center {
+    grid-column: 1 / -1;
+}
+
+/* Мобилка: оба фото по 2 кол, текст на всю ширину */
+@media (max-width: 768px) {
+    /* Сэндвич в мобилке: оба фото первыми в ряд, текст ниже */
+    .rp-block__grid--sandwich {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    .rp-block__photo--left-narrow {
+        width: calc(50% - 0.5rem);
+        order: 1;
+    }
+    .rp-block__photo--right-narrow {
+        width: calc(50% - 0.5rem);
+        order: 2;
+    }
+    .rp-block__text--center {
+        width: 100%;
+        order: 3;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .rp-block__pricing--center {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        column-gap: 1rem;
+        row-gap: 0.5rem;
+    }
+}
+
+/* ===== БЛОК: ТЕКСТ СЛЕВА, 2 ФОТО СПРАВА ===== */
+.rp-block__grid--reverse-2p {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.25rem;
+    margin-top: 4rem;
+    align-items: start;
+}
+
+/* Текст: колонки 1–5 */
+.rp-block__grid--reverse-2p .rp-block__text--left {
+    grid-column: 1 / 6;
+}
+
+/* Пустая колонка 6 */
+.rp-block__grid--reverse-2p .rp-block__spacer--mid {
+    grid-column: 6 / 7;
+}
+
+/* Фото C: колонки 7–9 */
+.rp-block__photo--c {
+    grid-column: 7 / 10;
+}
+
+/* Фото D: колонки 10–12 */
+.rp-block__photo--d {
+    grid-column: 10 / 13;
+}
+
+.rp-block__photo--c img,
+.rp-block__photo--d img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ===== БЛОК С ПЕРЕВЁРНУТЫМ ЛЕЙАУТОМ (текст слева, фото справа) ===== */
+.rp-block__grid--reverse {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.25rem;
+    margin-top: 4rem;
+    align-items: center;
+}
+
+/* Текст: колонки 1–5 */
+.rp-block__text--left {
+    grid-column: 1 / 6;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1.25rem;
+    align-content: start;
+}
+
+/* Пустая колонка 6 */
+.rp-block__spacer--mid {
+    grid-column: 6 / 7;
+}
+
+/* Фото: колонки 7–12 */
+.rp-block__photo--right {
+    grid-column: 7 / 13;
+}
+
+.rp-block__photo--right img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ===== ПРАЙС-БЛОК (3 строки билетов) ===== */
+/* Начинается со 2 колонки по 4 внутри 5-колончатого текстового блока */
+.rp-block__pricing {
+    grid-column: 2 / 6; /* col 1 пуст, cols 2–4 = названия, col 5 = цены */
+    display: grid;
+    grid-template-columns: 1fr auto;
+    row-gap: 0.75rem;
+    column-gap: 1.25rem; /* 20px */
+    margin-top: 4rem; /* 64px */
+    align-items: baseline;
+}
+
+/* Названия билетов — Inter Light 20px, без переноса на десктопе, выравнивание вправо */
+.rp-block__price-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1.25rem;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+    text-align: right;
+}
+
+/* Стоимость — Arsenal SC Bold, синий */
+.rp-block__price-value {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem; /* 24px */
+    color: var(--color-cta-bg);
+    text-align: left;
+}
+
+/* ===== АКТИВНАЯ ССЫЛКА В МЕНЮ ===== */
+.nav-link--active {
+    color: var(--color-cta-bg);
+}
+
+/* ===== ФУТЕР ===== */
+.footer {
+    background-color: var(--color-cta-bg);
+    padding: 2.5rem 0;
+    width: 100%;
+}
+
+.footer-content { color: #ffffff; }
+
+.footer-copyright {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+.footer-description {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1.25rem;
+    color: #ffffff;
+    margin-top: 0.5rem;
+}
+
+.footer-resources-title {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-top: 3rem;
+}
+
+.footer-resources {
+    margin-top: 0.625rem;
+    margin-bottom: 3.75rem;
+}
+
+.footer-resources-track {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.footer-resource { grid-column: span 2; overflow: hidden; }
+.footer-resource:nth-child(n+7) { display: none; }
+.footer-resource img { width: 100%; height: auto; display: block; transition: transform 0.3s ease; }
+.footer-resource:hover img { transform: scale(1.1); }
+
+/* ===== НОУТБУК (769–1366px) ===== */
+@media (min-width: 769px) and (max-width: 1366px) {
+    /* Посадочный блок */
+    .rp-landing      { margin-bottom: 7.5rem; }                          /* 120px */
+    .rp-title        { font-size: 4rem; margin-bottom: 3.5rem; }         /* 64px / 56px */
+    .rp-subtitle     { font-size: 2rem; line-height: 1.875rem; }         /* 32px — Заголовок 3 */
+
+    /* Текст посадочного блока: 20px → 16px */
+    .rp-description                      { font-size: 1rem; }
+    .rp-stat__label, .rp-stat__value     { font-size: 1rem; }            /* иконки время/путь/бюджет */
+    .rp-point__label, .rp-point__text    { font-size: 1rem; }            /* начало / конец */
+
+    /* Блоки маршрута */
+    .rp-block        { margin-top: 6.5rem; margin-bottom: 7.5rem; }      /* 104px / 120px */
+    .rp-block__title { font-size: 3rem; line-height: 2.5rem; }           /* 48px — Заголовок 2 */
+    .rp-block__grid,
+    .rp-block__grid--reverse,
+    .rp-block__grid--reverse-2p { margin-top: 3.5rem; }                  /* 56px */
+
+    /* Текст блоков маршрута: 20px → 16px */
+    .rp-block__address    { font-size: 1rem; }
+    .rp-block__time-label { font-size: 1rem; }
+    .rp-block__desc       { font-size: 1rem; }
+    .rp-block__audience   { font-size: 1rem; }
+
+    /* Цены: 20px → 16px */
+    .rp-block__price-label { font-size: 1rem; }
+    .rp-block__price-value { font-size: 1rem; }
+    .rp-block__price       { font-size: 1rem; }
+
+    /* Футер */
+    .footer-copyright,
+    .footer-resources-title { font-size: 1.25rem; }
+    .footer-description     { font-size: 1rem;    }
+}
+
+/* ===== ПЛАНШЕТ (≤1000px) ===== */
+@media (max-width: 1000px) {
+    /* Посадочный блок */
+    .rp-landing   { margin-bottom: 6rem; }
+    .rp-title     { font-size: 3.5rem; line-height: 1; margin-bottom: 2rem; }
+    .rp-subtitle  { font-size: 2rem; line-height: 2rem; }
+
+    /* Переключаем на вертикальный порядок: подзаголовок → иконки → фото → точки → описание */
+    .rp-intro { display: flex; flex-direction: column; gap: 1.25rem; }
+    .rp-info  { display: contents; }
+    .rp-subtitle    { order: 1; }
+    .rp-stats       { order: 2; flex-direction: row; gap: 1.25rem; margin-top: 0; }
+    .rp-image       { order: 3; position: static; }
+    .rp-points      { order: 4; display: flex; gap: 1.25rem; margin-top: 0; }
+    .rp-description { order: 5; margin-top: 0; font-size: 1.125rem; }
+
+    .rp-image img { position: static; height: auto; object-fit: initial; }
+
+    .rp-stat__icon   { height: 2rem; }
+    .rp-stat__label,
+    .rp-stat__value  { font-size: 1rem; }
+    .rp-point__label,
+    .rp-point__text  { font-size: 1rem; }
+
+    /* Блоки маршрута */
+    .rp-block       { margin-top: 5rem; margin-bottom: 6rem; }
+    .rp-block__title { font-size: 2.5rem; line-height: 2.75rem; }
+    .rp-block__address { font-size: 1.125rem; }
+
+    /* Сетка блоков: 4 колонки, всё стекается */
+    .rp-block__grid,
+    .rp-block__grid--reverse,
+    .rp-block__grid--reverse-2p {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    /* Фото a и b — по 2 колонки рядом */
+    .rp-block__photo--a { grid-column: 1 / 3; }
+    .rp-block__photo--b { grid-column: 3 / 5; }
+
+    /* Пустые спейсеры убираем */
+    .rp-block__spacer,
+    .rp-block__spacer--mid { display: none; }
+
+    /* Одиночное фото — полная ширина */
+    .rp-block__photo--single { grid-column: 1 / 5; }
+
+    /* Текстовый блок — все 4 колонки */
+    .rp-block__text {
+        grid-column: 1 / 5;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    /* Текст с фото справа — фото поднимается наверх */
+    .rp-block__photo--right {
+        grid-column: 1 / 5;
+        order: -1;
+    }
+    .rp-block__text--left {
+        grid-column: 1 / 5;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    /* Фото c и d */
+    .rp-block__photo--c { grid-column: 1 / 3; }
+    .rp-block__photo--d { grid-column: 3 / 5; }
+
+    /* Типографика текстовых блоков */
+    .rp-block__time-label { font-size: 1.125rem; }
+    .rp-block__desc       { font-size: 1.125rem; margin-top: 1rem; }
+    .rp-block__audience   { grid-column: 2 / 4; margin-top: 2rem; font-size: 1.125rem; text-align: right; }
+    .rp-block__price      { grid-column: 4 / 5; margin-top: 2rem; font-size: 1.25rem; }
+
+    /* Прайс */
+    .rp-block__pricing { grid-column: 1 / 5; margin-top: 2rem; }
+    .rp-block__price-label { font-size: 1.125rem; }
+    .rp-block__price-value { font-size: 1.125rem; }
+}
+
+/* ===== МОБИЛЬНАЯ ВЕРСИЯ (375px, 4 колонки) ===== */
+@media (max-width: 768px) {
+
+    /* ---- БЛОК 1: ПОСАДОЧНЫЙ ---- */
+    .rp-landing { margin-bottom: 6rem; }
+
+    .rp-title {
+        font-size: 3rem;
+        line-height: 3rem;
+        margin-bottom: 1.5rem; /* 24px */
+    }
+
+    /* display:contents делает детей .rp-info прямыми flex-элементами .rp-intro */
+    .rp-intro {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .rp-info { display: contents; }
+
+    /* Порядок: подзаголовок → иконки → фото → начало/конец → описание */
+    .rp-subtitle { order: 1; font-size: 1.5rem; line-height: 1.5rem; }
+    .rp-stats    { order: 2; flex-direction: row; gap: 1rem; margin-top: 0; }
+    .rp-image    { order: 3; position: static; }
+    .rp-points   { order: 4; display: flex; gap: 1rem; margin-top: 0; }
+    .rp-description { order: 5; margin-top: 0; font-size: 1rem; }
+
+    /* Фото — естественный размер */
+    .rp-image img {
+        position: static;
+        height: auto;
+        object-fit: initial;
+    }
+
+    /* Иконки в блоке 1 */
+    .rp-stat__icon { height: 1.75rem; }
+    .rp-stat__label, .rp-stat__value { font-size: 0.875rem; }
+
+    /* Начало / конец — по 2 колонки (50% каждый) */
+    .rp-point { flex: 1; }
+    .rp-point__label, .rp-point__text { font-size: 0.875rem; }
+
+    /* ---- БЛОКИ 2+ С ТОЧКАМИ МАРШРУТА ---- */
+    .rp-block { margin-top: 5rem; /* 80px */ }
+
+    /* Заголовок 2 мобилка: 36px */
+    .rp-block__title { font-size: 2.25rem; line-height: 2.5rem; }
+    .rp-block__address { font-size: 1rem; }
+
+    /* 4-колончатая сетка */
+    .rp-block__grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem; /* 24px */
+    }
+
+    /* Фото a и b — по 2 колонки */
+    .rp-block__photo--a { grid-column: 1 / 3; }
+    .rp-block__photo--b { grid-column: 3 / 5; }
+
+    /* Спейсер скрыт */
+    .rp-block__spacer { display: none; }
+
+    /* Одиночное фото — полная ширина */
+    .rp-block__photo--single { grid-column: 1 / 5; }
+
+    /* Текстовый блок — все 4 колонки, 4-колончатый субгрид */
+    .rp-block__text {
+        grid-column: 1 / 5;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .rp-block__time-icon { height: 1.75rem; }
+    .rp-block__time-label { font-size: 1rem; }
+    .rp-block__desc { font-size: 1rem; margin-top: 1rem; }
+    .rp-block__desc + .rp-block__desc { margin-top: 0.5rem; }
+
+    /* "Для всех" — колонки 2–3 из 4, "Бесплатно" — колонка 4 */
+    .rp-block__audience {
+        grid-column: 2 / 4;
+        margin-top: 2rem;
+        font-size: 1rem;
+        text-align: right;
+    }
+    .rp-block__price {
+        grid-column: 4 / 5;
+        margin-top: 2rem;
+        font-size: 1.25rem;
+    }
+
+    /* ---- БЛОК 3 (текст слева, фото справа) — мобилка ---- */
+    .rp-block__grid--reverse {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    /* Фото поднимается наверх */
+    .rp-block__photo--right {
+        grid-column: 1 / 5;
+        order: -1;
+    }
+
+    .rp-block__spacer--mid { display: none; }
+
+    .rp-block__text--left {
+        grid-column: 1 / 5;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    /* Прайс — все 4 колонки, перенос разрешён */
+    .rp-block__pricing {
+        grid-column: 1 / 5;
+        margin-top: 2rem;
+        column-gap: 1rem; /* 16px между названием и ценой */
+    }
+
+    .rp-block__price-label { white-space: normal; font-size: 1rem; }
+    .rp-block__price-value { font-size: 1.25rem; }
+
+    /* ---- ТЕКСТ СЛЕВА, 2 ФОТО СПРАВА (reverse-2p) — мобилка ---- */
+    .rp-block__grid--reverse-2p {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+    .rp-block__grid--reverse-2p .rp-block__text--left {
+        grid-column: 1 / 5;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+        order: 3;
+    }
+    .rp-block__grid--reverse-2p .rp-block__spacer--mid { display: none; }
+    .rp-block__photo--c { grid-column: 1 / 3; order: 1; }
+    .rp-block__photo--d { grid-column: 3 / 5; order: 2; }
+
+    /* ---- ФУТЕР ---- */
+    .footer { padding: 1.5rem 0; }
+    .footer-copyright { font-size: 1rem; }
+    .footer-description { font-size: 0.875rem; }
+    .footer-resources-title { font-size: 1.25rem; margin-top: 1.5rem; }
+    .footer-resources { margin-bottom: 2rem; overflow: hidden; }
+    .footer-resources-track {
+        display: flex;
+        gap: 1rem;
+        animation: marquee 20s linear infinite;
+        width: max-content;
+    }
+    .footer-resources-track:hover { animation-play-state: paused; }
+    @keyframes marquee {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+    .footer-resource { grid-column: auto; flex-shrink: 0; width: 10rem; }
+    .footer-resource:nth-child(n+7) { display: block; }
+}

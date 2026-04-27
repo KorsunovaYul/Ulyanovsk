@@ -1,18 +1,18 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Сайт</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
     <div class="container">
         <header class="header">
             <div class="logo">
                 <a href="index.html">
-                    <img src="img/Логотип2.svg" alt="Логотип" class="logo-img">
+                    <img src="img/logo2.svg" alt="Логотип" class="logo-img">
                 </a>
             </div>
             <button class="burger" aria-label="Меню">
@@ -22,13 +22,13 @@
             </button>
             <nav class="nav">
                 <div class="nav-links">
-                    <a href="#" class="nav-link">Маршруты</a>
-                    <a href="#" class="nav-link">Сувениры</a>
-                    <a href="#" class="nav-link">Об Ульяновске</a>
+                    <a href="routes.html" class="nav-link">Маршруты</a>
+                    <a href="souvenirs.html" class="nav-link">Сувениры</a>
+                    <a href="about.html" class="nav-link">Об Ульяновске</a>
                     <a href="history.html" class="nav-link">История</a>
                     <a href="#" class="nav-link">Брендбук</a>
                 </div>
-                <a href="#" class="nav-link nav-link--cta">Игра на знание города</a>
+                <a href="game.html" class="nav-link nav-link--cta">Игра на знание города</a>
             </nav>
             <div class="nav-overlay"></div>
         </header>
@@ -41,10 +41,10 @@
                 </div>
                 <div class="hero-video-wrapper">
                     <video class="hero-video hero-video--desktop" autoplay loop muted playsinline preload="auto">
-                        <source src="img/анимашка в начале.mp4" type="video/mp4">
+                        <source src="img/animation-intro.mp4" type="video/mp4">
                     </video>
                     <video class="hero-video hero-video--mobile" autoplay loop muted playsinline preload="auto">
-                        <source src="img/вертик_анимашка в начале для телефона.mp4" type="video/mp4">
+                        <source src="img/animation-intro-mobile.mp4" type="video/mp4">
                     </video>
                 </div>
             </section>
@@ -52,89 +52,89 @@
             <section class="city-map">
                 <h2 class="section-title">Карта центра города</h2>
                 <div class="map-container">
-                    <img src="img/карта/фон карты.png" alt="Фон карты центра города" class="map-bg">
+                    <img src="img/map/map-background.png" alt="Фон карты центра города" class="map-bg">
                     <div class="map-markers">
                         <div class="map-marker map-marker--30-let-pobedy" data-marker="30 лет Великой Победы">
-                            <img src="img/карта/30 лет Великой Победы.png" alt="30 лет Великой Победы" class="marker-icon">
+                            <img src="img/map/great-victory.png" alt="30 лет Великой Победы" class="marker-icon">
                             <span class="marker-label">30 лет Великой Победы</span>
                             <div class="marker-popup">
-                                <p class="marker-popup-text">Заглушка описания — 30 лет Великой Победы</p>
+                                <p class="marker-popup-text">Площадь с памятником штурмовику Ил-2, выпускавшемуся в Ульяновске в годы Великой Отечественной войны. Символ трудового и воинского подвига горожан.</p>
                             </div>
                         </div>
                         <div class="map-marker map-marker--balalaika" data-marker="балаалйка">
-                            <img src="img/карта/балаалйка.png" alt="Балаалйка" class="marker-icon">
+                            <img src="img/map/balalaika.png" alt="Балаалйка" class="marker-icon">
                             <span class="marker-label">Музей<br>балалайки</span>
                             <div class="marker-popup">
-                                <p class="marker-popup-text">Заглушка описания — Балаалйка</p>
+                                <p class="marker-popup-text">Единственный в России музей балалайки, открытый в 2008 году. Коллекция из более 100 инструментов охватывает историю народного инструмента с XVII века до наших дней.</p>
                             </div>
                         </div>
                         <div class="map-marker map-marker--yahjting" data-marker="Яхтинг">
-                            <img src="img/карта/Яхтинг.png" alt="Яхтинг" class="marker-icon">
+                            <img src="img/map/yachting.png" alt="Яхтинг" class="marker-icon">
                             <span class="marker-label">Яхтинг</span>
                             <div class="marker-popup">
-                                <p class="marker-popup-text">Заглушка описания — Яхтинг</p>
+                                <p class="marker-popup-text">Волжский яхт-клуб у подножия берегового склона — место городского досуга и водного спорта. Отсюда открывается живописный вид на Императорский мост.</p>
                             </div>
                         </div>
                         <div class="map-marker map-marker--venec" data-marker="Гостинница _Венец_">
-                            <img src="img/карта/Гостинница _Венец_.png" alt="Гостинница «Венец»" class="marker-icon">
+                            <img src="img/map/venets-hotel.png" alt="Гостинница «Венец»" class="marker-icon">
                             <span class="marker-label">Гостинница «Венец»</span>
                             <div class="marker-popup">
-                                <p class="marker-popup-text">Заглушка описания — Гостинница «Венец»</p>
+                                <p class="marker-popup-text">Высотная гостиница 1970 года постройки на берегу Волги. С видовой площадки открывается панорама реки и двух мостов — Президентского и Императорского.</p>
                             </div>
                         </div>
                         <div class="map-marker map-marker--lenin" data-marker="Ленинский мемориал">
-                            <img src="img/карта/Ленинский мемориал.png" alt="Ленинский мемориал" class="marker-icon">
+                            <img src="img/map/leninsky-memorial.png" alt="Ленинский мемориал" class="marker-icon">
                             <span class="marker-label">Ленинский мемориал</span>
                             <div class="marker-popup">
-                                <p class="marker-popup-text">Заглушка описания — Ленинский мемориал</p>
+                                <p class="marker-popup-text">Монументальный комплекс, открытый в 1970 году к 100-летию В.И. Ленина. Включает музей и дом-музей семьи Ульяновых — выдающийся образец советской монументальной архитектуры.</p>
                             </div>
                         </div>
                         <div class="map-marker map-marker--goncharov" data-marker="Музей И.А. Гончарова">
-                            <img src="img/карта/Музей И.А. Гончарова.png" alt="Музей И.А. Гончарова" class="marker-icon">
+                            <img src="img/map/goncharov-museum.png" alt="Музей И.А. Гончарова" class="marker-icon">
                             <span class="marker-label">Музей И.А. Гончарова</span>
                             <div class="marker-popup">
-                                <p class="marker-popup-text">Заглушка описания — Музей И.А. Гончарова</p>
+                                <p class="marker-popup-text">Каменное здание конца XVIII века, где родился писатель Иван Гончаров в 1812 году. С 1982 года здесь расположен его историко-мемориальный музей, объект культурного наследия федерального значения.</p>
                             </div>
                         </div>
                         <div class="map-marker map-marker--bukva-yo" data-marker="Памятник букве «Ё»">
-                            <img src="img/карта/Памятник букве Ё.png" alt="Памятник букве «Ё»" class="marker-icon">
+                            <img src="img/map/yo-monument.png" alt="Памятник букве «Ё»" class="marker-icon">
                             <span class="marker-label">Памятник букве «Ё»</span>
                             <div class="marker-popup">
-                                <p class="marker-popup-text">Заглушка описания — Памятник букве «Ё»</p>
+                                <p class="marker-popup-text">Единственный в мире памятник букве алфавита, установленный в 2005 году. Буква «Ё» была введена в литературный оборот симбирским историком Николаем Карамзиным в 1797 году.</p>
                             </div>
                         </div>
                         <div class="map-marker map-marker--simbircit" data-marker="Симбирцитовая Зала">
-                            <img src="img/карта/Симбирцитовая Зала.png" alt="Симбирцитовая Зала" class="marker-icon">
+                            <img src="img/map/simbirtsit-hall.png" alt="Симбирцитовая Зала" class="marker-icon">
                             <span class="marker-label">Симбирцитовая Зала</span>
                             <div class="marker-popup">
-                                <p class="marker-popup-text">Заглушка описания — Симбирцитовая Зала</p>
+                                <p class="marker-popup-text">Единственный в мире музей симбирцита — уникального природного минерала, добываемого только в Ульяновской области. В экспозиции — украшения, изделия и геологическая история Поволжья.</p>
                             </div>
                         </div>
                         <div class="map-marker map-marker--sobor" data-marker="Спасско_Вознесенский собор">
-                            <img src="img/карта/Спасско_Вознесенский собор.png" alt="Спасско-Вознесенский собор" class="marker-icon">
+                            <img src="img/map/spassky-cathedral.png" alt="Спасско-Вознесенский собор" class="marker-icon">
                             <span class="marker-label">Спасско-Вознесенский собор</span>
                             <div class="marker-popup">
-                                <p class="marker-popup-text">Заглушка описания — Спасско-Вознесенский собор</p>
+                                <p class="marker-popup-text">Кафедральный собор Ульяновской митрополии, возведённый в 1841 году в стиле позднего классицизма. После советского периода возвращён Церкви и полностью восстановлен.</p>
                             </div>
                         </div>
                         <div class="map-marker map-marker--art-museum" data-marker="Художественный музей">
-                            <img src="img/карта/Художественный музей.png" alt="Художественный музей" class="marker-icon">
+                            <img src="img/map/art-museum.png" alt="Художественный музей" class="marker-icon">
                             <span class="marker-label">Художественный музей</span>
                             <div class="marker-popup">
-                                <p class="marker-popup-text">Заглушка описания — Художественный музей</p>
+                                <p class="marker-popup-text">Ульяновский областной художественный музей, основанный в 1895 году. Хранит более 12 000 произведений русского и западноевропейского искусства XVII–XX веков.</p>
                             </div>
                         </div>
                         <div class="map-marker map-marker--church-mary" data-marker="Церковь Св. Марии">
-                            <img src="img/карта/Церковь Св. Марии.png" alt="Церковь Св. Марии" class="marker-icon">
+                            <img src="img/map/st-mary-church.png" alt="Церковь Св. Марии" class="marker-icon">
                             <span class="marker-label">Церковь Св. Марии</span>
                             <div class="marker-popup">
-                                <p class="marker-popup-text">Заглушка описания — Церковь Св. Марии</p>
+                                <p class="marker-popup-text">Католический храм, построенный в 1894 году для польской и немецкой общин Симбирска. Один из немногих сохранившихся действующих католических приходов Поволжья.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="city-map-more">
-                    <a href="#" class="city-map-more-btn">
+                    <a href="routes.html" class="city-map-more-btn">
                         <span>Маршруты</span>
                         <svg class="arrow-icon arrow-icon--blue" width="71" height="46" viewBox="0 0 71 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path class="arrow-fill" d="M70 23.0386L34.75 42.5241L34.75 3.553L70 23.0386Z"/>
@@ -149,19 +149,19 @@
                 <!-- Мобильная статистика — перед плашкой, 4 колонки -->
                 <div class="stat-mobile">
                     <div class="stat-mobile-item">
-                        <img src="img/крепость.svg" alt="Крепость" class="stat-icon">
+                        <img src="img/fortress.svg" alt="Крепость" class="stat-icon">
                         <span class="stat-text">Основан в&nbsp;1648 году</span>
                     </div>
                     <div class="stat-mobile-item">
-                        <img src="img/площадь.svg" alt="Площадь" class="stat-icon">
+                        <img src="img/area.svg" alt="Площадь" class="stat-icon">
                         <span class="stat-text">Площадь 316 км²</span>
                     </div>
                     <div class="stat-mobile-item">
-                        <img src="img/жители.svg" alt="Жители" class="stat-icon">
+                        <img src="img/residents.svg" alt="Жители" class="stat-icon">
                         <span class="stat-text">614 тыс. жителей</span>
                     </div>
                     <div class="stat-mobile-item">
-                        <img src="img/звезда.svg" alt="Звезда" class="stat-icon">
+                        <img src="img/star.svg" alt="Звезда" class="stat-icon">
                         <span class="stat-text">Город трудовой<br>доблести</span>
                     </div>
                 </div>
@@ -170,7 +170,7 @@
                         <p class="about-text">Ульяновск — это родина Ленина и&nbsp;город авиаторов, где история России чувствуется в&nbsp;каждом районе. Здесь переплетаются купеческий Симбирск с&nbsp;его старинными усадьбами и&nbsp;современный промышленный центр. Знаменитые мосты, авиационный музей под&nbsp;открытым небом, живописная набережная и&nbsp;особая волжская атмосфера делают Ульяновск уникальным местом, где прошлое встречается с&nbsp;настоящим.</p>
                         <div class="about-buttons">
                             <div class="about-btn-wrapper">
-                                <a href="#" class="about-btn">
+                                <a href="about.html" class="about-btn">
                                     <span>Подробнее о городе</span>
                                     <svg class="arrow-icon" width="71" height="46" viewBox="0 0 71 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path class="arrow-fill" d="M70 23.0386L34.75 42.5241L34.75 3.553L70 23.0386Z" fill="white"/>
@@ -179,7 +179,7 @@
                                 </a>
                             </div>
                             <div class="about-btn-wrapper">
-                                <a href="#" class="about-btn">
+                                <a href="history.html" class="about-btn">
                                     <span>Подробнее об истории</span>
                                     <svg class="arrow-icon" width="71" height="46" viewBox="0 0 71 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path class="arrow-fill" d="M70 23.0386L34.75 42.5241L34.75 3.553L70 23.0386Z" fill="white"/>
@@ -191,21 +191,21 @@
                     </div>
                     <div class="stat-group stat-group-9">
                         <div class="stat-item">
-                            <img src="img/крепость.svg" alt="Крепость" class="stat-icon">
+                            <img src="img/fortress.svg" alt="Крепость" class="stat-icon">
                             <span class="stat-text">Основан в&nbsp;1648 году</span>
                         </div>
                         <div class="stat-item">
-                            <img src="img/площадь.svg" alt="Площадь" class="stat-icon">
+                            <img src="img/area.svg" alt="Площадь" class="stat-icon">
                             <span class="stat-text">Площадь 316 км²</span>
                         </div>
                     </div>
                     <div class="stat-group stat-group-11">
                         <div class="stat-item">
-                            <img src="img/жители.svg" alt="Жители" class="stat-icon">
+                            <img src="img/residents.svg" alt="Жители" class="stat-icon">
                             <span class="stat-text">614 тыс. жителей</span>
                         </div>
                         <div class="stat-item">
-                            <img src="img/звезда.svg" alt="Звезда" class="stat-icon">
+                            <img src="img/star.svg" alt="Звезда" class="stat-icon">
                             <span class="stat-text">Город трудовой<br>доблести</span>
                         </div>
                     </div>
@@ -217,43 +217,43 @@
                 <div class="grid">
                     <div class="souvenir-item">
                         <div class="souvenir-img-wrapper">
-                            <img src="img/сувениры/открытка.png" alt="Открытка" class="souvenir-img">
+                            <img src="img/souvenirs/postcard.png" alt="Открытка" class="souvenir-img">
                         </div>
                         <div class="souvenir-info">
                             <span class="souvenir-name">Открытка</span>
                             <span class="souvenir-price">100 ₽</span>
                         </div>
                     </div>
-                    <div class="souvenir-item souvenir-placeholder">
+                    <div class="souvenir-item">
                         <div class="souvenir-img-wrapper">
-                            <div class="souvenir-img-placeholder"></div>
+                            <img src="img/souvenirs/ecobag.png" alt="Экосумка" class="souvenir-img">
                         </div>
                         <div class="souvenir-info">
-                            <span class="souvenir-name">Заглушка 1</span>
-                            <span class="souvenir-price">—</span>
+                            <span class="souvenir-name">Экосумка</span>
+                            <span class="souvenir-price">350 ₽</span>
                         </div>
                     </div>
-                    <div class="souvenir-item souvenir-placeholder">
+                    <div class="souvenir-item">
                         <div class="souvenir-img-wrapper">
-                            <div class="souvenir-img-placeholder"></div>
+                            <img src="img/souvenirs/tshirt.png" alt="Футболка" class="souvenir-img">
                         </div>
                         <div class="souvenir-info">
-                            <span class="souvenir-name">Заглушка 2</span>
-                            <span class="souvenir-price">—</span>
+                            <span class="souvenir-name">Футболка</span>
+                            <span class="souvenir-price">500 ₽</span>
                         </div>
                     </div>
-                    <div class="souvenir-item souvenir-placeholder">
+                    <div class="souvenir-item">
                         <div class="souvenir-img-wrapper">
-                            <div class="souvenir-img-placeholder"></div>
+                            <img src="img/souvenirs/mug.png" alt="Кружка" class="souvenir-img">
                         </div>
                         <div class="souvenir-info">
-                            <span class="souvenir-name">Заглушка 3</span>
-                            <span class="souvenir-price">—</span>
+                            <span class="souvenir-name">Кружка</span>
+                            <span class="souvenir-price">400 ₽</span>
                         </div>
                     </div>
                 </div>
                 <div class="souvenirs-more">
-                    <a href="#" class="souvenirs-more-btn">
+                    <a href="souvenirs.html" class="souvenirs-more-btn">
                         <span>ещё больше сувениров</span>
                         <svg class="arrow-icon arrow-icon--blue" width="71" height="46" viewBox="0 0 71 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path class="arrow-fill" d="M70 23.0386L34.75 42.5241L34.75 3.553L70 23.0386Z"/>
@@ -273,25 +273,31 @@
                 <h3 class="footer-resources-title">Официальные ресурсы города</h3>
                 <div class="footer-resources">
                     <div class="footer-resources-track">
-                        <div class="footer-resource"><img src="img/ресурсы/Rectangle 241.png" alt="Ресурс 1"></div>
-                        <div class="footer-resource"><img src="img/ресурсы/Rectangle 242.png" alt="Ресурс 2"></div>
-                        <div class="footer-resource"><img src="img/ресурсы/Rectangle 243.png" alt="Ресурс 3"></div>
-                        <div class="footer-resource"><img src="img/ресурсы/Rectangle 244.png" alt="Ресурс 4"></div>
-                        <div class="footer-resource"><img src="img/ресурсы/Rectangle 245.png" alt="Ресурс 5"></div>
-                        <div class="footer-resource"><img src="img/ресурсы/Rectangle 246.png" alt="Ресурс 6"></div>
+                        <div class="footer-resource"><a href="https://ulgov.gosuslugi.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 241.png" alt="Ресурс 1"></a></div>
+                        <div class="footer-resource"><a href="https://ulgov.gosuslugi.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 242.png" alt="Ресурс 2"></a></div>
+                        <div class="footer-resource"><a href="https://tic73.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 243.png" alt="Ресурс 3"></a></div>
+                        <div class="footer-resource"><a href="https://visit-ulyanovsk.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 244.png" alt="Ресурс 4"></a></div>
+                        <div class="footer-resource"><a href="https://visit-ulyanovsk.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 245.png" alt="Ресурс 5"></a></div>
+                        <div class="footer-resource"><a href="https://leninmemorial.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 246.png" alt="Ресурс 6"></a></div>
                         <!-- Дубликаты для бесшовной петли -->
-                        <div class="footer-resource"><img src="img/ресурсы/Rectangle 241.png" alt="Ресурс 1"></div>
-                        <div class="footer-resource"><img src="img/ресурсы/Rectangle 242.png" alt="Ресурс 2"></div>
-                        <div class="footer-resource"><img src="img/ресурсы/Rectangle 243.png" alt="Ресурс 3"></div>
-                        <div class="footer-resource"><img src="img/ресурсы/Rectangle 244.png" alt="Ресурс 4"></div>
-                        <div class="footer-resource"><img src="img/ресурсы/Rectangle 245.png" alt="Ресурс 5"></div>
-                        <div class="footer-resource"><img src="img/ресурсы/Rectangle 246.png" alt="Ресурс 6"></div>
+                        <div class="footer-resource"><a href="https://ulgov.gosuslugi.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 241.png" alt="Ресурс 1"></a></div>
+                        <div class="footer-resource"><a href="https://ulgov.gosuslugi.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 242.png" alt="Ресурс 2"></a></div>
+                        <div class="footer-resource"><a href="https://tic73.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 243.png" alt="Ресурс 3"></a></div>
+                        <div class="footer-resource"><a href="https://visit-ulyanovsk.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 244.png" alt="Ресурс 4"></a></div>
+                        <div class="footer-resource"><a href="https://visit-ulyanovsk.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 245.png" alt="Ресурс 5"></a></div>
+                        <div class="footer-resource"><a href="https://leninmemorial.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 246.png" alt="Ресурс 6"></a></div>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
-    <script src="script.js"></script>
+    <!-- Мобильный попап карты — вне контейнера, чтобы не обрезался overflow -->
+    <div id="mapMobilePopup" class="map-mobile-popup">
+        <p class="map-mobile-popup__title"></p>
+        <p class="map-mobile-popup__text"></p>
+    </div>
+
+    <script src="js/script.js"></script>
 </div>
 </body>
 </html>

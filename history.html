@@ -1,30 +1,36 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>История — Ульяновск</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="history.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/history.css">
 </head>
 <body>
     <div class="container">
         <header class="header">
             <div class="logo">
                 <a href="index.html">
-                    <img src="img/Логотип2.svg" alt="Логотип" class="logo-img">
+                    <img src="img/logo2.svg" alt="Логотип" class="logo-img">
                 </a>
             </div>
+            <button class="burger" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <nav class="nav">
                 <div class="nav-links">
-                    <a href="index.html" class="nav-link">Маршруты</a>
-                    <a href="#" class="nav-link">Сувениры</a>
-                    <a href="#" class="nav-link">Об Ульяновске</a>
-                    <a href="history.html" class="nav-link">История</a>
+                    <a href="routes.html" class="nav-link">Маршруты</a>
+                    <a href="souvenirs.html" class="nav-link">Сувениры</a>
+                    <a href="about.html" class="nav-link">Об Ульяновске</a>
+                    <a href="history.html" class="nav-link nav-link--active">История</a>
                     <a href="#" class="nav-link">Брендбук</a>
                 </div>
-                <a href="#" class="nav-link nav-link--cta">Игра на знание города</a>
+                <a href="game.html" class="nav-link nav-link--cta">Игра на знание города</a>
             </nav>
+            <div class="nav-overlay"></div>
         </header>
     </div>
 
@@ -47,14 +53,14 @@
                 <div class="history-images">
                     <div class="history-images-left">
                         <div class="history-img-wrapper history-img--11">
-                            <img src="img/история/11.png" alt="Герб Синбирска">
+                            <img src="img/history/11.png" alt="Герб Синбирска">
                         </div>
                         <div class="history-img-wrapper history-img--12">
-                            <img src="img/история/12.png" alt="Основание Синбирска">
+                            <img src="img/history/12.png" alt="Основание Синбирска">
                         </div>
                     </div>
                     <div class="history-img-wrapper history-img--13">
-                        <img src="img/история/13.png" alt="Крепость Синбирск">
+                        <img src="img/history/13.png" alt="Крепость Синбирск">
                     </div>
                 </div>
             </div>
@@ -64,13 +70,13 @@
         <section class="history-block" data-index="1">
             <div class="history-content">
                 <div class="history-text">
-                    <h1 class="history-title">Получение статуса губернского центра</h1>
+                    <h1 class="history-title" data-gradient>Получение статуса губернского центра</h1>
                     <p class="history-description">Преобразование Симбирского наместничества в губернию официально закрепило за городом статус административного, экономического и культурного центра региона. Это способствовало росту торговли, развитию дворянской и купеческой культуры, а также появлению значимых каменных зданий.</p>
                 </div>
                 
                 <div class="history-images">
                     <div class="history-img-wrapper history-img--21">
-                        <img src="img/история/21.png" alt="Губернский город">
+                        <img src="img/history/21.png" alt="Губернский город">
                     </div>
                 </div>
             </div>
@@ -80,13 +86,13 @@
         <section class="history-block" data-index="2">
             <div class="history-content">
                 <div class="history-text">
-                    <h1 class="history-title">Строительство железной дороги и моста через Волгу</h1>
+                    <h1 class="history-title" data-gradient>Строительство железной дороги и моста через Волгу</h1>
                     <p class="history-description">Прокладка железной дороги дала мощный толчок промышленному развитию, связав Симбирск с центральными регионами России. А открытие в 1916 году Императорского моста, ставшего на тот момент одним из крупнейших в Европе, решило стратегическую задачу круглогодичной связи двух берегов Волги, многократно увеличив торговый оборот.</p>
                 </div>
                 
                 <div class="history-images">
                     <div class="history-img-wrapper history-img--31">
-                        <img src="img/история/31.png" alt="Железная дорога">
+                        <img src="img/history/31.png" alt="Железная дорога">
                     </div>
                 </div>
             </div>
@@ -96,17 +102,17 @@
         <section class="history-block" data-index="3">
             <div class="history-content">
                 <div class="history-text">
-                    <h1 class="history-title">Эвакуация предприятий и становление промышленного центра</h1>
+                    <h1 class="history-title" data-gradient>Эвакуация предприятий и становление промышленного центра</h1>
                     <p class="history-description">В годы Великой Отечественной войны в Ульяновск были эвакуированы десятки заводов и учреждений, включая часть московского автозавода ЗИС, на базе которого вырос УАЗ. Это событие предопределило превращение города в крупный индустриальный центр и привело к значительному росту населения. В 1943 году была образована Ульяновская область.</p>
                 </div>
 
                 <div class="history-images">
                     <div class="history-images-row">
                         <div class="history-img-wrapper history-img--41">
-                            <img src="img/история/41.png" alt="Эвакуация">
+                            <img src="img/history/41.png" alt="Эвакуация">
                         </div>
                         <div class="history-img-wrapper history-img--42">
-                            <img src="img/история/42.png" alt="Завод">
+                            <img src="img/history/42.png" alt="Завод">
                         </div>
                         
                     </div>
@@ -124,7 +130,7 @@
 
                 <div class="history-images">
                     <div class="history-img-wrapper history-img--43">
-                        <img src="img/история/43.png" alt="Ленинский мемориал">
+                        <img src="img/history/43.png" alt="Ленинский мемориал">
                     </div>
                 </div>
             </div>
@@ -134,19 +140,47 @@
         <section class="history-block" data-index="5">
             <div class="history-content">
                 <div class="history-text">
-                    <h1 class="history-title">Строительство Ульяновского авиационного комплекса</h1>
+                    <h1 class="history-title" data-gradient>Строительство Ульяновского авиационного комплекса</h1>
                     <p class="history-description">Решение о возведении на левом берегу Волги гигантского авиазавода (ныне «Авиастар») и нового жилого района стало важнейшим градостроительным проектом XX века для города. Это закрепило за Ульяновском статус одной из авиационных столиц России и привело к появлению целого «Нового города» с современной инфраструктурой.</p>
                 </div>
 
                 <div class="history-images">
                     <div class="history-img-wrapper history-img--45">
-                        <img src="img/история/61.png" alt="Авиационный комплекс">
+                        <img src="img/history/61.png" alt="Авиационный комплекс">
                     </div>
                 </div>
             </div>
         </section>
         </div>
         <div class="history-spacer"></div>
+
+        <!-- Таймлайн внутри sticky-контейнера — теперь в одном stacking context с фото -->
+        <div class="history-timeline">
+            <div class="timeline-track">
+                <div class="timeline-line"></div>
+                <div class="timeline-progress"></div>
+                <div class="timeline-dot" style="left: 0%;" data-index="0">
+                    <span class="timeline-label timeline-label--top">1648</span>
+                </div>
+                <div class="timeline-dot" style="left: 37%;" data-index="1">
+                    <span class="timeline-label timeline-label--bottom">1769</span>
+                </div>
+                <div class="timeline-dot" style="left: 76%;" data-index="2">
+                    <span class="timeline-label timeline-label--top">1898–1916</span>
+                </div>
+                <div class="timeline-dot" style="left: 89%;" data-index="3">
+                    <span class="timeline-label timeline-label--bottom">1941–1943</span>
+                </div>
+                <div class="timeline-dot" style="left: 95%;" data-index="4">
+                    <span class="timeline-label timeline-label--top">1965–1970</span>
+                </div>
+                <div class="timeline-dot" style="left: 100%;" data-index="5">
+                    <span class="timeline-label timeline-label--bottom">с 1976</span>
+                </div>
+                <div class="timeline-indicator" style="left: 0%;"></div>
+            </div>
+        </div>
+
     </main>
 
     <!-- Футер -->
@@ -158,51 +192,41 @@
                 <h3 class="footer-resources-title">Официальные ресурсы города</h3>
                 <div class="footer-resources">
                     <div class="footer-resources-track">
-                        <div class="footer-resource"><img src="img/ресурсы/Rectangle 241.png" alt="Ресурс 1"></div>
-                        <div class="footer-resource"><img src="img/ресурсы/Rectangle 242.png" alt="Ресурс 2"></div>
-                        <div class="footer-resource"><img src="img/ресурсы/Rectangle 243.png" alt="Ресурс 3"></div>
-                        <div class="footer-resource"><img src="img/ресурсы/Rectangle 244.png" alt="Ресурс 4"></div>
-                        <div class="footer-resource"><img src="img/ресурсы/Rectangle 245.png" alt="Ресурс 5"></div>
-                        <div class="footer-resource"><img src="img/ресурсы/Rectangle 246.png" alt="Ресурс 6"></div>
-                        <div class="footer-resource"><img src="img/ресурсы/Rectangle 241.png" alt="Ресурс 1"></div>
-                        <div class="footer-resource"><img src="img/ресурсы/Rectangle 242.png" alt="Ресурс 2"></div>
-                        <div class="footer-resource"><img src="img/ресурсы/Rectangle 243.png" alt="Ресурс 3"></div>
-                        <div class="footer-resource"><img src="img/ресурсы/Rectangle 244.png" alt="Ресурс 4"></div>
-                        <div class="footer-resource"><img src="img/ресурсы/Rectangle 245.png" alt="Ресурс 5"></div>
-                        <div class="footer-resource"><img src="img/ресурсы/Rectangle 246.png" alt="Ресурс 6"></div>
+                        <div class="footer-resource"><a href="https://ulgov.gosuslugi.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 241.png" alt="Ресурс 1"></a></div>
+                        <div class="footer-resource"><a href="https://ulgov.gosuslugi.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 242.png" alt="Ресурс 2"></a></div>
+                        <div class="footer-resource"><a href="https://tic73.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 243.png" alt="Ресурс 3"></a></div>
+                        <div class="footer-resource"><a href="https://visit-ulyanovsk.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 244.png" alt="Ресурс 4"></a></div>
+                        <div class="footer-resource"><a href="https://visit-ulyanovsk.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 245.png" alt="Ресурс 5"></a></div>
+                        <div class="footer-resource"><a href="https://leninmemorial.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 246.png" alt="Ресурс 6"></a></div>
+                        <div class="footer-resource"><a href="https://ulgov.gosuslugi.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 241.png" alt="Ресурс 1"></a></div>
+                        <div class="footer-resource"><a href="https://ulgov.gosuslugi.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 242.png" alt="Ресурс 2"></a></div>
+                        <div class="footer-resource"><a href="https://tic73.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 243.png" alt="Ресурс 3"></a></div>
+                        <div class="footer-resource"><a href="https://visit-ulyanovsk.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 244.png" alt="Ресурс 4"></a></div>
+                        <div class="footer-resource"><a href="https://visit-ulyanovsk.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 245.png" alt="Ресурс 5"></a></div>
+                        <div class="footer-resource"><a href="https://leninmemorial.ru/" target="_blank" rel="noopener"><img src="img/resources/Rectangle 246.png" alt="Ресурс 6"></a></div>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Таймлайн -->
-    <div class="history-timeline">
-        <div class="timeline-track">
-            <div class="timeline-line"></div>
-            <div class="timeline-progress"></div>
-            <div class="timeline-dot" style="left: 0%;" data-index="0">
-                <span class="timeline-label timeline-label--top">1648</span>
+    <!-- Мобильный таймлайн (только ≤768px) — остаётся fixed снаружи -->
+    <div class="history-timeline-mob">
+        <div class="timeline-mob-track">
+            <div class="timeline-mob-line"></div>
+            <div class="timeline-mob-dot" id="mob-dot-a">
+                <span class="timeline-mob-label"></span>
             </div>
-            <div class="timeline-dot" style="left: 37%;" data-index="1">
-                <span class="timeline-label timeline-label--bottom">1769</span>
+            <div class="timeline-mob-dot" id="mob-dot-b">
+                <span class="timeline-mob-label"></span>
             </div>
-            <div class="timeline-dot" style="left: 76%;" data-index="2">
-                <span class="timeline-label timeline-label--top">1898–1916</span>
+            <div class="timeline-mob-dot" id="mob-dot-c">
+                <span class="timeline-mob-label"></span>
             </div>
-            <div class="timeline-dot" style="left: 89%;" data-index="3">
-                <span class="timeline-label timeline-label--bottom">1941–1943</span>
-            </div>
-            <div class="timeline-dot" style="left: 95%;" data-index="4">
-                <span class="timeline-label timeline-label--top">1965–1970</span>
-            </div>
-            <div class="timeline-dot" style="left: 100%;" data-index="5">
-                <span class="timeline-label timeline-label--bottom">с 1976</span>
-            </div>
-            <div class="timeline-indicator" style="left: 0%;"></div>
         </div>
     </div>
 
-    <script src="history.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/history.js"></script>
 </body>
 </html>

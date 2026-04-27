@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Знаток Ульяновска — Вопрос</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/game-question.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/logo2.svg" alt="Логотип" class="logo-img">
+                </a>
+            </div>
+            <button class="burger" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav">
+                <div class="nav-links">
+                    <a href="routes.html" class="nav-link">Маршруты</a>
+                    <a href="souvenirs.html" class="nav-link">Сувениры</a>
+                    <a href="about.html" class="nav-link">Об Ульяновске</a>
+                    <a href="history.html" class="nav-link">История</a>
+                    <a href="#" class="nav-link">Брендбук</a>
+                </div>
+                <a href="game.html" class="nav-link nav-link--cta">Игра на знание города</a>
+            </nav>
+            <div class="nav-overlay"></div>
+        </header>
+    </div>
+
+    <!-- Фиксированная подпись — как «История» на странице истории -->
+    <div class="quiz-label-fixed">
+        <span class="quiz-label-text">Игра «Знаток Ульяновска»</span>
+    </div>
+
+    <main class="quiz-main">
+        <div class="container">
+            <div class="quiz-grid">
+
+                <!-- ══ Блок вопроса ══ -->
+                <div class="quiz-block" id="quiz-block">
+
+                    <!-- Счётчик: 1/10 -->
+                    <div class="quiz-counter" id="quiz-counter">1/10</div>
+
+                    <!-- Фото вопроса -->
+                    <div class="quiz-img-wrap">
+                        <img src="img/game/1.png" alt="" class="quiz-img" id="quiz-img">
+                    </div>
+
+                    <!-- Текст вопроса -->
+                    <p class="quiz-question" id="quiz-question">Как изначально назывался Ульяновск?</p>
+
+                    <!-- Варианты ответа -->
+                    <div class="quiz-options" id="quiz-options">
+                        <button class="quiz-option" data-idx="0">Симбирск</button>
+                        <button class="quiz-option" data-idx="1">Ульяновск</button>
+                        <button class="quiz-option" data-idx="2">Приволжск</button>
+                        <button class="quiz-option" data-idx="3">Сибирск</button>
+                    </div>
+
+                    <!-- Кнопка «Дальше» -->
+                    <div class="quiz-next-wrap">
+                        <button class="quiz-next-btn" id="quiz-next" disabled>Дальше</button>
+                    </div>
+
+                </div>
+
+                <!-- ══ Экран результата (скрыт по умолчанию) ══ -->
+                <div class="quiz-result" id="quiz-result" hidden>
+                    <div class="quiz-result-score" id="quiz-result-score"></div>
+                    <p class="quiz-result-subtitle" id="quiz-result-subtitle"></p>
+                    <p class="quiz-result-text" id="quiz-result-text"></p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+    <script src="js/game-question.js"></script>
+</body>
+</html>

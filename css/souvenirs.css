@@ -1,0 +1,718 @@
+/* ===== СТРАНИЦА СУВЕНИРЫ ===== */
+
+/* Активная ссылка в меню */
+.nav-link--active {
+    color: var(--color-cta-bg);
+}
+
+/* ── Основная область ── */
+.souv-main {
+    padding-top: 10rem;
+    padding-bottom: 6rem;
+}
+
+/* ── Заголовок H1 ── */
+.souv-title {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: clamp(3rem, 4.16vw, 5rem);
+    color: var(--color-text-primary);
+    line-height: 1.1;
+    margin-bottom: 2rem;
+}
+
+/* ══════════════════════════════════
+   ПАНЕЛЬ ПОИСКА + СОРТИРОВКИ
+══════════════════════════════════ */
+.souv-toolbar {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+/* Поисковая строка — 9 колонок, стиль как у кнопок вариантов */
+.souv-search {
+    grid-column: 1 / 10;
+    height: 4.5rem;
+    padding: 0 1.5rem;
+    background: #ffffff;
+    border: 2px solid var(--color-cta-bg);
+    color: var(--color-text-primary);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;   /* 24pt */
+    outline: none;
+    transition: box-shadow 0.15s ease;
+}
+
+.souv-search::placeholder {
+    color: #9ab3d4;
+}
+
+.souv-search:focus {
+    box-shadow: inset 0 0 0 1px var(--color-cta-bg);
+}
+
+/* Обёртка сортировки — 3 колонки */
+.souv-sort-wrap {
+    grid-column: 10 / 13;
+    position: relative;
+}
+
+/* Кнопка фильтра — синяя, как nav-link--cta */
+.souv-sort-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 4.5rem;
+    padding: 0 1.5rem;
+    background-color: var(--color-cta-bg);
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;   /* 24pt */
+    gap: 0.75rem;
+    transition: background-color 0.2s ease;
+}
+
+.souv-sort-btn:hover {
+    background-color: var(--color-cta-hover);
+}
+
+.souv-sort-arrow {
+    width: 2.25rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+    /* цвета из SVG — белый треугольник + тёмно-синий контур */
+    transition: transform 0.2s ease;
+}
+
+.souv-sort-btn[aria-expanded="true"] .souv-sort-arrow {
+    transform: rotate(180deg);
+}
+
+/* Выпадающий список */
+.souv-sort-dropdown {
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border: 2px solid var(--color-cta-bg);
+    border-top: none;
+    list-style: none;
+    z-index: 100;
+}
+
+.souv-sort-dropdown[hidden] {
+    display: none;
+}
+
+/* Разделители между пунктами — как в мобильном меню */
+.souv-sort-dropdown li + li {
+    border-top: 0.125rem solid var(--color-cta-bg);
+}
+
+.souv-sort-option {
+    display: block;
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    background: none;
+    border: none;
+    text-align: left;
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;   /* 24pt */
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.souv-sort-option:hover {
+    background: var(--color-cta-hover);
+    color: var(--color-text-primary);
+}
+
+.souv-sort-option--active {
+    color: var(--color-cta-bg);
+}
+
+/* Скрытая секция / карточка */
+.souv-section--hidden  { display: none; }
+.souv-card--hidden     { display: none; }
+
+/* Адрес под строкой поиска */
+.souv-address {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;   /* 24pt */
+    color: var(--color-text-primary);
+    margin-bottom: 3rem;
+}
+
+/* ══════════════════════════════════
+   СЕКЦИИ КАТЕГОРИЙ
+══════════════════════════════════ */
+.souv-section {
+    margin-bottom: 4rem;
+}
+
+.souv-section-title {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: clamp(2rem, 2.5vw, 3rem);
+    color: var(--color-text-primary);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+/* ══════════════════════════════════
+   КАРТОЧКА ТОВАРА
+══════════════════════════════════ */
+.souv-card {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Изображение / заглушка */
+.souv-card__img {
+    background: #e0e0e0;
+    overflow: hidden;
+    flex: 1;
+}
+
+.souv-card__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+}
+
+/* Ховер — картинка увеличивается внутри рамки */
+.souv-card:hover .souv-card__img img {
+    transform: scale(1.06);
+}
+
+/* Заглушка — серый фон с иконкой */
+.souv-card__img--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.souv-card__img--placeholder::after {
+    content: '';
+    width: 3.5rem;
+    height: 3.5rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Crect x='3' y='3' width='18' height='18' rx='2' stroke='%23aaa' stroke-width='1.5'/%3E%3Ccircle cx='8.5' cy='8.5' r='1.5' stroke='%23aaa' stroke-width='1.5'/%3E%3Cpath d='M3 16l5-5 4 4 3-3 6 6' stroke='%23aaa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.6;
+}
+
+/* Подпись: название + цена */
+.souv-card__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.5rem 0 0;
+    gap: 0.5rem;
+}
+
+.souv-card__name {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;   /* 24pt */
+    color: var(--color-text-primary);
+    line-height: 1.2;
+}
+
+.souv-card__price {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;  /* 24pt */
+    color: var(--color-cta-bg);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* ══════════════════════════════════
+   СЕТКИ ПО СЕКЦИЯМ
+══════════════════════════════════ */
+.souv-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.25rem;
+}
+
+/* ── ОДЕЖДА (4 товара): бенто-раскладка ──
+   [sm][sm][   lg   ]
+   [  wide  ][   lg   ]
+*/
+.souv-grid--clothes .souv-card:nth-child(1) { grid-column: 1 / 4;  grid-row: 1; }
+.souv-grid--clothes .souv-card:nth-child(2) { grid-column: 4 / 7;  grid-row: 1; }
+.souv-grid--clothes .souv-card:nth-child(3) { grid-column: 7 / 13; grid-row: 1 / 3; }
+.souv-grid--clothes .souv-card:nth-child(4) { grid-column: 1 / 7;  grid-row: 2; }
+
+/* Высоты изображений для одежды */
+.souv-grid--clothes .souv-card:nth-child(1) .souv-card__img,
+.souv-grid--clothes .souv-card:nth-child(2) .souv-card__img { aspect-ratio: 1; }
+
+.souv-grid--clothes .souv-card:nth-child(4) .souv-card__img { aspect-ratio: 2; }
+
+/* ── ОТКРЫТКИ (4 товара): бенто — высокий справа + 2 маленьких + широкий ──
+   [sm][sm][   tall   ]
+   [  wide ][   tall   ]
+*/
+.souv-grid--postcards .souv-card:nth-child(1) { grid-column: 7 / 13; grid-row: 1 / 3; }
+.souv-grid--postcards .souv-card:nth-child(2) { grid-column: 1 / 4;  grid-row: 1; }
+.souv-grid--postcards .souv-card:nth-child(3) { grid-column: 4 / 7;  grid-row: 1; }
+.souv-grid--postcards .souv-card:nth-child(4) { grid-column: 1 / 7;  grid-row: 2; }
+
+.souv-grid--postcards .souv-card:nth-child(2) .souv-card__img,
+.souv-grid--postcards .souv-card:nth-child(3) .souv-card__img { aspect-ratio: 1; }
+.souv-grid--postcards .souv-card:nth-child(4) .souv-card__img { aspect-ratio: 2; }
+
+/* ── ЗНАЧКИ (6 товаров): бенто — кружка квадрат справа + 4 маленьких + широкий ──
+   [sm][sm][  square  ]
+   [sm][sm][  square  ]
+   [ wide  ]
+*/
+.souv-grid--badges .souv-card:nth-child(1) { grid-column: 1 / 4;  grid-row: 1; }
+.souv-grid--badges .souv-card:nth-child(2) { grid-column: 4 / 7;  grid-row: 1; }
+.souv-grid--badges .souv-card:nth-child(3) { grid-column: 7 / 13; grid-row: 1 / 3; }
+.souv-grid--badges .souv-card:nth-child(4) { grid-column: 1 / 4;  grid-row: 2; }
+.souv-grid--badges .souv-card:nth-child(5) { grid-column: 4 / 7;  grid-row: 2; }
+.souv-grid--badges .souv-card:nth-child(6) { grid-column: 1 / 7;  grid-row: 3; }
+
+.souv-grid--badges .souv-card:nth-child(1) .souv-card__img,
+.souv-grid--badges .souv-card:nth-child(2) .souv-card__img,
+.souv-grid--badges .souv-card:nth-child(3) .souv-card__img,
+.souv-grid--badges .souv-card:nth-child(4) .souv-card__img,
+.souv-grid--badges .souv-card:nth-child(5) .souv-card__img { aspect-ratio: 1; }
+.souv-grid--badges .souv-card:nth-child(6) .souv-card__img { aspect-ratio: 2; }
+
+/* ══════════════════════════════════
+   НОУТБУК (769–1366px)
+══════════════════════════════════ */
+@media (min-width: 769px) and (max-width: 1366px) {
+    .souv-main    { padding-top: 8rem; }
+    .souv-title   { font-size: 3rem; }
+    .souv-address { font-size: 1.25rem; }
+}
+
+/* ══════════════════════════════════
+   ПЛАНШЕТ (≤1000px)
+══════════════════════════════════ */
+@media (max-width: 1000px) {
+    .souv-main  { padding-top: 8rem; }
+
+    .souv-toolbar { grid-template-columns: repeat(8, 1fr); }
+    .souv-search  { grid-column: 1 / 7; }
+    .souv-sort-wrap { grid-column: 7 / 9; }
+
+    .souv-grid { grid-template-columns: repeat(8, 1fr); }
+
+    /* Одежда — 8-кол */
+    .souv-grid--clothes .souv-card:nth-child(1) { grid-column: 1 / 3; }
+    .souv-grid--clothes .souv-card:nth-child(2) { grid-column: 3 / 5; }
+    .souv-grid--clothes .souv-card:nth-child(3) { grid-column: 5 / 9; grid-row: 1 / 3; }
+    .souv-grid--clothes .souv-card:nth-child(4) { grid-column: 1 / 5; grid-row: 2; }
+
+    /* Открытки (4 карточки, 8-кол) */
+    .souv-grid--postcards .souv-card:nth-child(1) { grid-column: 5 / 9; grid-row: 1 / 3; }
+    .souv-grid--postcards .souv-card:nth-child(2) { grid-column: 1 / 3; grid-row: 1; }
+    .souv-grid--postcards .souv-card:nth-child(3) { grid-column: 3 / 5; grid-row: 1; }
+    .souv-grid--postcards .souv-card:nth-child(4) { grid-column: 1 / 5; grid-row: 2; }
+
+    /* Значки (6 карточек, 8-кол) */
+    .souv-grid--badges .souv-card:nth-child(1) { grid-column: 1 / 3; grid-row: 1; }
+    .souv-grid--badges .souv-card:nth-child(2) { grid-column: 3 / 5; grid-row: 1; }
+    .souv-grid--badges .souv-card:nth-child(3) { grid-column: 5 / 9; grid-row: 1 / 3; }
+    .souv-grid--badges .souv-card:nth-child(4) { grid-column: 1 / 3; grid-row: 2; }
+    .souv-grid--badges .souv-card:nth-child(5) { grid-column: 3 / 5; grid-row: 2; }
+    .souv-grid--badges .souv-card:nth-child(6) { grid-column: 1 / 5; grid-row: 3; }
+}
+
+/* ══════════════════════════════════
+   МОБИЛЬНЫЙ (≤768px)
+══════════════════════════════════ */
+@media (max-width: 768px) {
+    .souv-main    { padding-top: 7rem; padding-bottom: 3rem; }
+    .souv-title   { font-size: 2rem; margin-bottom: 1.25rem; }
+    .souv-address { font-size: 1rem; margin-bottom: 2rem; }
+
+    .souv-toolbar {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .souv-search    { width: 100%; }
+    .souv-sort-wrap { width: 100%; }
+    .souv-sort-btn  { width: 100%; }
+
+    /* 4-колоночная сетка, маленькие карточки = 2 кол, большие = 4 */
+    .souv-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+    }
+
+    /* Явно переопределяем все позиции (планшетные nth-child слишком специфичны) */
+
+    /* Одежда */
+    .souv-grid--clothes .souv-card:nth-child(1) { grid-column: 1 / 3; grid-row: auto; }
+    .souv-grid--clothes .souv-card:nth-child(2) { grid-column: 3 / 5; grid-row: auto; }
+    .souv-grid--clothes .souv-card:nth-child(3) { grid-column: 1 / 5; grid-row: auto; }
+    .souv-grid--clothes .souv-card:nth-child(4) { grid-column: 1 / 5; grid-row: auto; }
+
+    /* Открытки (мобильная, 4 карточки) */
+    .souv-grid--postcards .souv-card:nth-child(1) { grid-column: 1 / 5; grid-row: auto; }
+    .souv-grid--postcards .souv-card:nth-child(2) { grid-column: 1 / 3; grid-row: auto; }
+    .souv-grid--postcards .souv-card:nth-child(3) { grid-column: 3 / 5; grid-row: auto; }
+    .souv-grid--postcards .souv-card:nth-child(4) { grid-column: 1 / 5; grid-row: auto; }
+
+    /* Значки (мобильная, 6 карточек) */
+    .souv-grid--badges .souv-card:nth-child(1) { grid-column: 1 / 3; grid-row: auto; }
+    .souv-grid--badges .souv-card:nth-child(2) { grid-column: 3 / 5; grid-row: auto; }
+    .souv-grid--badges .souv-card:nth-child(3) { grid-column: 1 / 5; grid-row: auto; }
+    .souv-grid--badges .souv-card:nth-child(4) { grid-column: 1 / 3; grid-row: auto; }
+    .souv-grid--badges .souv-card:nth-child(5) { grid-column: 3 / 5; grid-row: auto; }
+    .souv-grid--badges .souv-card:nth-child(6) { grid-column: 1 / 5; grid-row: auto; }
+
+    /* Изображения: маленькие — квадрат, большие — шире */
+    .souv-grid .souv-card__img { aspect-ratio: 1; }
+
+    .souv-grid--clothes .souv-card:nth-child(3) .souv-card__img,
+    .souv-grid--badges .souv-card:nth-child(3) .souv-card__img { aspect-ratio: 1; }
+
+    .souv-grid--postcards .souv-card:nth-child(1) .souv-card__img { aspect-ratio: 16 / 9; }
+    .souv-grid--postcards .souv-card:nth-child(4) .souv-card__img { aspect-ratio: 2; }
+
+    .souv-grid--clothes .souv-card:nth-child(4) .souv-card__img { aspect-ratio: 2; }
+    .souv-grid--badges .souv-card:nth-child(6) .souv-card__img  { aspect-ratio: 2; }
+
+    .souv-results-grid { grid-template-columns: 1fr 1fr !important; }
+
+    .souv-card__name,
+    .souv-card__price { font-size: 1rem; }
+}
+
+/* ══════════════════════════════════
+   РЕЗУЛЬТАТЫ ПОИСКА
+══════════════════════════════════ */
+.souv-results {
+    display: none;   /* виден только при поиске */
+    margin-bottom: 4rem;
+}
+
+.souv-results.souv-results--active {
+    display: block;
+}
+
+.souv-results-title {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: clamp(1.25rem, 1.5vw, 1.75rem);
+    color: var(--color-text-primary);
+    margin-bottom: 1.5rem;
+}
+
+/* Равномерная сетка результатов — 4 колонки */
+.souv-results-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+}
+
+/* В результатах у каждой карточки фиксированное квадратное фото */
+.souv-results-grid .souv-card__img {
+    aspect-ratio: 1;
+    flex: none;
+}
+
+.souv-no-results {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1.25rem;
+    color: var(--color-text-primary);
+    opacity: 0.6;
+    padding: 2rem 0;
+}
+
+@media (max-width: 1000px) {
+    .souv-results-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .souv-results-grid { grid-template-columns: 1fr; }
+}
+
+/* ══════════════════════════════════
+   ПОПАП СУВЕНИРА
+══════════════════════════════════ */
+.souv-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.souv-modal[hidden] { display: none; }
+
+.souv-modal__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(16, 40, 80, 0.55);
+    cursor: pointer;
+}
+
+.souv-modal__dialog {
+    position: relative;
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    width: 78vw;
+    max-width: 1100px;
+    height: 70vh;
+    background: #f0f2f5;
+    overflow: hidden;
+}
+
+/* Кнопка закрыть — стиль как у бургер-X */
+.souv-modal__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 2.3125rem;
+    height: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3125rem;
+    justify-content: center;
+    padding: 0;
+}
+.souv-modal__close span {
+    display: block;
+    width: 100%;
+    height: 0.125rem;
+    background-color: var(--color-text-primary);
+    transition: background-color 0.15s;
+}
+.souv-modal__close span:nth-child(1) {
+    transform: rotate(45deg) translate(0.3125rem, 0.3125rem);
+}
+.souv-modal__close span:nth-child(2) { opacity: 0; }
+.souv-modal__close span:nth-child(3) {
+    transform: rotate(-45deg) translate(0.3125rem, -0.3125rem);
+}
+.souv-modal__close:hover span { background-color: var(--color-cta-bg); }
+
+/* Левая часть — изображение: фиксированная высота = высота диалога */
+.souv-modal__img-wrap {
+    position: relative;
+    background: #d5d8dd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    overflow: hidden;
+}
+
+.souv-modal__img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Кнопка расширения фото */
+.souv-modal__expand {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 0.75rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    background: rgba(255,255,255,0.85);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-primary);
+    transition: background 0.15s;
+    z-index: 5;
+    padding: 0;
+}
+.souv-modal__expand:hover { background: #ffffff; }
+.souv-modal__expand svg { width: 1.1rem; height: 1.1rem; }
+.souv-modal__expand svg path { stroke-width: 2; transition: stroke-width 0.15s; }
+.souv-modal__expand:hover svg path { stroke-width: 3; }
+
+/* Полноэкранный просмотр */
+.souv-fullscreen {
+    position: fixed;
+    inset: 0;
+    z-index: 1300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.souv-fullscreen[hidden] { display: none; }
+
+.souv-fullscreen__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    cursor: pointer;
+}
+
+.souv-fullscreen__img {
+    position: relative;
+    max-width: 92vw;
+    max-height: 92vh;
+    object-fit: contain;
+    z-index: 1;
+}
+
+/* Кнопка закрыть полноэкранный просмотр — стиль как у бургер-X */
+.souv-fullscreen__close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 2.3125rem;
+    height: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3125rem;
+    justify-content: center;
+    padding: 0;
+}
+.souv-fullscreen__close span {
+    display: block;
+    width: 100%;
+    height: 0.125rem;
+    background-color: #ffffff;
+    transition: background-color 0.15s;
+}
+.souv-fullscreen__close span:nth-child(1) {
+    transform: rotate(45deg) translate(0.3125rem, 0.3125rem);
+}
+.souv-fullscreen__close span:nth-child(2) { opacity: 0; }
+.souv-fullscreen__close span:nth-child(3) {
+    transform: rotate(-45deg) translate(0.3125rem, -0.3125rem);
+}
+.souv-fullscreen__close:hover span { opacity: 0.75; }
+
+/* Плейсхолдер в попапе */
+.souv-modal__img-wrap--placeholder::after {
+    content: '';
+    width: 5rem;
+    height: 5rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Crect x='3' y='3' width='18' height='18' rx='2' stroke='%23aaa' stroke-width='1.5'/%3E%3Ccircle cx='8.5' cy='8.5' r='1.5' stroke='%23aaa' stroke-width='1.5'/%3E%3Cpath d='M3 16l5-5 4 4 3-3 6 6' stroke='%23aaa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.5;
+}
+
+/* Правая часть — информация */
+.souv-modal__info {
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem 2rem 2rem 2rem;
+    border-left: none;
+}
+
+.souv-modal__name {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: clamp(2rem, 2.5vw, 3rem);
+    color: var(--color-text-primary);
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+}
+
+.souv-modal__body {
+    flex: 1;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.125rem;
+    color: var(--color-text-primary);
+    line-height: 1.7;
+}
+
+.souv-modal__body p { margin: 0; }
+
+.souv-modal__color { margin-bottom: 0.75rem !important; }
+
+.souv-modal__specs-title {
+    font-weight: 700;
+    margin-bottom: 0.1rem !important;
+}
+
+.souv-modal__weight { margin-top: 0.75rem !important; }
+
+/* Строка цены: Цена ........... 500 ₽ */
+.souv-modal__price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(16,40,80,0.15);
+}
+
+.souv-modal__price-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+}
+
+.souv-modal__dots {
+    flex: 1;
+    border-bottom: 2px dotted var(--color-text-primary);
+    opacity: 0.35;
+    margin-bottom: 0.3rem;
+}
+
+.souv-modal__price-val {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+}
+
+/* Мобильный попап */
+@media (max-width: 768px) {
+    .souv-modal__dialog {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        width: 92vw;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .souv-modal__img-wrap { height: 200px; aspect-ratio: unset; }
+    .souv-modal__info { border-left: none; border-top: none; padding: 1.5rem; }
+    .souv-modal__name { font-size: 1.75rem; }
+    .souv-modal__body { font-size: 1rem; }
+    .souv-modal__price-val { font-size: 1.5rem; }
+}

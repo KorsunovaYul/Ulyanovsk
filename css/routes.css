@@ -1,0 +1,283 @@
+/* ===== СТРАНИЦА МАРШРУТЫ ===== */
+
+/* ===== ЗАГОЛОВОК СЕКЦИИ ===== */
+.routes-title {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 6rem; /* 96px — Заголовок 1 */
+    line-height: 1;
+    color: var(--color-text-primary);
+    margin-bottom: 4rem; /* 64px — расстояние от заголовка до блока */
+}
+
+/* ===== СЕТКА КАРТОЧЕК ===== */
+.routes-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.25rem; /* 20px */
+    margin-bottom: 11.5rem; /* 184px — расстояние от блока до футера */
+}
+
+/* ===== КАРТОЧКА МАРШРУТА ===== */
+.route-card {
+    grid-column: span 4; /* 4 из 12 колонок */
+    aspect-ratio: 1 / 1; /* квадратная карточка */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    text-decoration: none;
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.route-card:hover {
+    transform: rotate(-2deg);
+}
+
+/* Внутренний контент карточки */
+.route-card__inner {
+    position: relative;
+    z-index: 1;
+    padding: 1.5rem; /* 24px — внутренний отступ блока */
+}
+
+/* ===== НАЗВАНИЕ МАРШРУТА ===== */
+.route-card__title {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 3rem; /* 48px — Заголовок 3 */
+    line-height: 3.125rem; /* 50px */
+    color: var(--color-text-primary); /* #153A61 */
+}
+
+/* ===== ПАРАМЕТРЫ (время, расстояние) ===== */
+.route-card__params {
+    margin-top: 1rem; /* 16px */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.route-param {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem; /* 10px */
+}
+
+.route-param__icon {
+    width: 1.5rem; /* 24px */
+    height: 1.5rem;
+    flex-shrink: 0;
+}
+
+/* Иконка времени — синий #3379CF */
+.route-param__icon--time {
+    filter: brightness(0) saturate(100%) invert(44%) sepia(78%) saturate(500%) hue-rotate(185deg) brightness(97%) contrast(95%);
+}
+
+/* Иконка расстояния — зелёный #3AA697 */
+.route-param__icon--distance {
+    filter: brightness(0) saturate(100%) invert(58%) sepia(40%) saturate(450%) hue-rotate(128deg) brightness(92%) contrast(88%);
+}
+
+/* Выделение в тексте 3 — Inter Bold 20px */
+.route-param__text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem; /* 20px */
+    color: var(--color-text-primary); /* #153A61 */
+}
+
+/* ===== АНИМАЦИЯ НАЖАТИЯ ===== */
+@keyframes card-press {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(0.94); }
+    100% { transform: scale(1); }
+}
+
+.route-card--pressed {
+    animation: card-press 0.35s ease;
+}
+
+/* ===== АКТИВНАЯ ССЫЛКА В МЕНЮ ===== */
+.nav-link--active {
+    color: var(--color-cta-bg);
+}
+
+/* ===== ФУТЕР ===== */
+.footer {
+    background-color: var(--color-cta-bg);
+    padding: 2.5rem 0;
+    width: 100%;
+}
+
+.footer-content {
+    color: #ffffff;
+}
+
+.footer-copyright {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+.footer-description {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1.25rem;
+    color: #ffffff;
+    margin-top: 0.5rem;
+}
+
+.footer-resources-title {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-top: 3rem;
+}
+
+.footer-resources {
+    margin-top: 0.625rem;
+    margin-bottom: 3.75rem;
+}
+
+.footer-resources-track {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.footer-resource {
+    grid-column: span 2;
+    overflow: hidden;
+}
+
+.footer-resource:nth-child(n+7) {
+    display: none;
+}
+
+.footer-resource img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.footer-resource:hover img {
+    transform: scale(1.1);
+}
+
+/* ===== НОУТБУК (769–1366px) ===== */
+@media (min-width: 769px) and (max-width: 1366px) {
+    .routes-title      { font-size: 4rem; margin-bottom: 3.5rem; }     /* 64px / 56px */
+    .routes-grid       { margin-bottom: 7.5rem; }                       /* 120px */
+    .route-card__title { font-size: 2rem; line-height: 1.875rem; }     /* 32px — Заголовок 3 */
+    .route-param__text { font-size: 1rem; }                            /* 16px — Выд.3 */
+    .route-param__icon { width: 1.25rem; height: 1.25rem; }            /* чуть меньше иконка */
+
+    /* Футер */
+    .footer-copyright,
+    .footer-resources-title { font-size: 1.25rem; }
+    .footer-description     { font-size: 1rem;    }
+}
+
+/* ===== ПЛАНШЕТ (≤1000px) ===== */
+@media (max-width: 1000px) {
+    .routes-title      { font-size: 3.5rem; margin-bottom: 3rem; }
+    .routes-grid       { grid-template-columns: 1fr; gap: 1rem; margin-bottom: 6rem; }
+    .route-card        { grid-column: span 1; }
+    .route-card__title { font-size: 2.5rem; line-height: 2.5rem; }
+    .route-param__text { font-size: 1.125rem; }
+}
+
+/* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
+@media (max-width: 768px) {
+    /* Заголовок страницы — Заголовок 1 мобилка: 48px */
+    .routes-title {
+        font-size: 3rem; /* 48px */
+        line-height: 3rem;
+        margin-bottom: 2.5rem; /* 40px — от заголовка до блока */
+    }
+
+    /* Колонки: столбик, каждая карточка на всю ширину */
+    .routes-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem; /* 16px — между карточками */
+        margin-bottom: 6rem; /* 96px — от блока до футера */
+    }
+
+    .route-card {
+        grid-column: span 1;
+        aspect-ratio: 1 / 1;
+        transform: none !important; /* убираем hover-поворот на мобилке */
+    }
+
+    /* Внутренний отступ — 16px */
+    .route-card__inner {
+        padding: 1rem; /* 16px */
+    }
+
+    /* Заголовок карточки — Заголовок 3 мобилка: 24px */
+    .route-card__title {
+        font-size: 1.5rem; /* 24px */
+        line-height: 1.5rem; /* 24px */
+    }
+
+    /* Подписи — Выделение в тексте 3 мобилка: Inter Bold 16px */
+    .route-param__text {
+        font-size: 1rem; /* 16px */
+    }
+
+    /* Футер */
+    .footer {
+        padding: 1.5rem 0;
+    }
+
+    .footer-copyright {
+        font-size: 1rem;
+    }
+
+    .footer-description {
+        font-size: 0.875rem;
+    }
+
+    .footer-resources-title {
+        font-size: 1.25rem;
+        margin-top: 1.5rem;
+    }
+
+    .footer-resources {
+        margin-bottom: 2rem;
+        overflow: hidden;
+    }
+
+    .footer-resources-track {
+        display: flex;
+        gap: 1rem;
+        animation: marquee 20s linear infinite;
+        width: max-content;
+    }
+
+    .footer-resources-track:hover {
+        animation-play-state: paused;
+    }
+
+    @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+    .footer-resource {
+        grid-column: auto;
+        flex-shrink: 0;
+        width: 10rem;
+    }
+
+    .footer-resource:nth-child(n+7) {
+        display: block;
+    }
+}
