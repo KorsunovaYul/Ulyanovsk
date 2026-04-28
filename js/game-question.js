@@ -175,3 +175,11 @@ function showResult() {
 
 /* ── Старт ── */
 renderQuestion(0);
+
+/* ── Скрываем подпись при скролле (десктоп и мобилка) ── */
+const quizLabel = document.querySelector('.quiz-label-fixed');
+if (quizLabel) {
+    window.addEventListener('scroll', () => {
+        quizLabel.classList.toggle('hidden', window.scrollY > 30);
+    }, { passive: true });
+}

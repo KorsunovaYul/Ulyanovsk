@@ -692,11 +692,11 @@
     .souv-modal__body { font-size: 1rem; }
     .souv-modal__price-val { font-size: 1.5rem; }
 
-    /* Крестик чуть меньше, жирность линии та же */
+    /* Крестик немного меньше десктопного, жирность линии та же */
     .souv-modal__close {
-        top: 0.75rem;
-        right: 0.75rem;
-        width: 1.125rem;
-        height: 1.125rem;
+        top: 0.875rem;
+        right: 0.875rem;
+        width: 1.375rem;
+        height: 1.375rem;
     }
 }

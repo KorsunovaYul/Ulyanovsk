@@ -7,6 +7,11 @@
     left: 8.33vw;
     z-index: 50;
     pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+.quiz-label-fixed.hidden {
+    opacity: 0;
 }
 
 .quiz-label-text {
