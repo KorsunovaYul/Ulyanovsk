@@ -34,14 +34,13 @@
 /* Поисковая строка — 9 колонок, стиль как у кнопок вариантов */
 .souv-search {
     grid-column: 1 / 10;
-    height: 4.5rem;
-    padding: 0 1.5rem;
+    padding: 0.5rem;
     background: #ffffff;
     border: 2px solid var(--color-cta-bg);
     color: var(--color-text-primary);
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 1.5rem;   /* 24pt */
+    font-size: 1rem;     /* 16px */
     outline: none;
     transition: box-shadow 0.15s ease;
 }
@@ -66,15 +65,14 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 4.5rem;
-    padding: 0 1.5rem;
+    padding: 0.5rem;
     background-color: var(--color-cta-bg);
     color: #ffffff;
     border: none;
     cursor: pointer;
     font-family: 'Arsenal SC', sans-serif;
     font-weight: bold;
-    font-size: 1.5rem;   /* 24pt */
+    font-size: 1rem;     /* 16px */
     gap: 0.75rem;
     transition: background-color 0.2s ease;
 }
@@ -120,13 +118,13 @@
 .souv-sort-option {
     display: block;
     width: 100%;
-    padding: 0.875rem 1.5rem;
+    padding: 0.5rem;
     background: none;
     border: none;
     text-align: left;
     font-family: 'Arsenal SC', sans-serif;
     font-weight: bold;
-    font-size: 1.5rem;   /* 24pt */
+    font-size: 1rem;     /* 16px */
     color: var(--color-text-primary);
     cursor: pointer;
     transition: background 0.15s ease, color 0.15s ease;
@@ -487,36 +485,35 @@
     overflow: hidden;
 }
 
-/* Кнопка закрыть — стиль как у бургер-X */
+/* Кнопка закрыть — квадратный X, одинаковый отступ сверху и справа */
 .souv-modal__close {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-    width: 2.3125rem;
-    height: 1rem;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 1.5rem;
+    height: 1.5rem;
     background: none;
     border: none;
     cursor: pointer;
     z-index: 10;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3125rem;
-    justify-content: center;
     padding: 0;
 }
 .souv-modal__close span {
     display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
     width: 100%;
     height: 0.125rem;
     background-color: var(--color-text-primary);
     transition: background-color 0.15s;
 }
 .souv-modal__close span:nth-child(1) {
-    transform: rotate(45deg) translate(0.3125rem, 0.3125rem);
+    transform: translateY(-50%) rotate(45deg);
 }
-.souv-modal__close span:nth-child(2) { opacity: 0; }
+.souv-modal__close span:nth-child(2) { display: none; }
 .souv-modal__close span:nth-child(3) {
-    transform: rotate(-45deg) translate(0.3125rem, -0.3125rem);
+    transform: translateY(-50%) rotate(-45deg);
 }
 .souv-modal__close:hover span { background-color: var(--color-cta-bg); }
 
@@ -529,6 +526,7 @@
     justify-content: center;
     height: 100%;
     overflow: hidden;
+    cursor: zoom-in;
 }
 
 .souv-modal__img-wrap img {
@@ -536,30 +534,8 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    pointer-events: none;
 }
-
-/* Кнопка расширения фото */
-.souv-modal__expand {
-    position: absolute;
-    bottom: 0.75rem;
-    right: 0.75rem;
-    width: 2.25rem;
-    height: 2.25rem;
-    background: rgba(255,255,255,0.85);
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-text-primary);
-    transition: background 0.15s;
-    z-index: 5;
-    padding: 0;
-}
-.souv-modal__expand:hover { background: #ffffff; }
-.souv-modal__expand svg { width: 1.1rem; height: 1.1rem; }
-.souv-modal__expand svg path { stroke-width: 2; transition: stroke-width 0.15s; }
-.souv-modal__expand:hover svg path { stroke-width: 3; }
 
 /* Полноэкранный просмотр */
 .souv-fullscreen {
@@ -715,4 +691,12 @@
     .souv-modal__name { font-size: 1.75rem; }
     .souv-modal__body { font-size: 1rem; }
     .souv-modal__price-val { font-size: 1.5rem; }
+
+    /* Крестик чуть меньше, жирность линии та же */
+    .souv-modal__close {
+        top: 0.75rem;
+        right: 0.75rem;
+        width: 1.125rem;
+        height: 1.125rem;
+    }
 }

@@ -6,6 +6,7 @@
     <title>Сайт</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/souvenirs.css">
 </head>
 <body>
     <div class="container">
@@ -215,7 +216,9 @@
             <section class="souvenirs">
                 <h2 class="section-title">Сувениры</h2>
                 <div class="grid">
-                    <div class="souvenir-item">
+                    <div class="souvenir-item"
+                         data-specs="Мелованный картон 300 г/м²|Размер: 10×15 см"
+                         style="cursor:pointer">
                         <div class="souvenir-img-wrapper">
                             <img src="img/souvenirs/postcard.png" alt="Открытка" class="souvenir-img">
                         </div>
@@ -224,7 +227,11 @@
                             <span class="souvenir-price">100 ₽</span>
                         </div>
                     </div>
-                    <div class="souvenir-item">
+                    <div class="souvenir-item"
+                         data-color="натуральный бежевый"
+                         data-specs="100% хлопок|Размер: 40×35 см"
+                         data-weight="200 г"
+                         style="cursor:pointer">
                         <div class="souvenir-img-wrapper">
                             <img src="img/souvenirs/ecobag.png" alt="Экосумка" class="souvenir-img">
                         </div>
@@ -233,7 +240,11 @@
                             <span class="souvenir-price">350 ₽</span>
                         </div>
                     </div>
-                    <div class="souvenir-item">
+                    <div class="souvenir-item"
+                         data-color="голубой"
+                         data-specs="100% хлопок, премиум качество|Длина — 74 см|Ширина — 57 см"
+                         data-weight="300 г"
+                         style="cursor:pointer">
                         <div class="souvenir-img-wrapper">
                             <img src="img/souvenirs/tshirt.png" alt="Футболка" class="souvenir-img">
                         </div>
@@ -242,7 +253,10 @@
                             <span class="souvenir-price">500 ₽</span>
                         </div>
                     </div>
-                    <div class="souvenir-item">
+                    <div class="souvenir-item"
+                         data-specs="Керамика|Объём: 330 мл"
+                         data-weight="350 г"
+                         style="cursor:pointer">
                         <div class="souvenir-img-wrapper">
                             <img src="img/souvenirs/mug.png" alt="Кружка" class="souvenir-img">
                         </div>
@@ -297,7 +311,41 @@
         <p class="map-mobile-popup__text"></p>
     </div>
 
+    <!-- ══ Попап сувенира (используется при клике на главной) ══ -->
+    <div class="souv-modal" id="souvModal" hidden aria-modal="true" role="dialog">
+        <div class="souv-modal__overlay" id="souvModalOverlay"></div>
+        <div class="souv-modal__dialog">
+            <button class="souv-modal__close" id="souvModalClose" aria-label="Закрыть">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="souv-modal__img-wrap" id="modalImgWrap"></div>
+            <div class="souv-modal__info">
+                <h2 class="souv-modal__name" id="modalName"></h2>
+                <div class="souv-modal__body" id="modalBody"></div>
+                <div class="souv-modal__price-row">
+                    <span class="souv-modal__price-label">Цена</span>
+                    <span class="souv-modal__dots"></span>
+                    <span class="souv-modal__price-val" id="modalPrice"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ Полноэкранный просмотр фото ══ -->
+    <div class="souv-fullscreen" id="souvFullscreen" hidden>
+        <div class="souv-fullscreen__overlay" id="souvFullscreenOverlay"></div>
+        <img class="souv-fullscreen__img" id="souvFullscreenImg" src="" alt="">
+        <button class="souv-fullscreen__close" id="souvFullscreenClose" aria-label="Закрыть">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
     <script src="js/script.js"></script>
+    <script src="js/souvenirs.js"></script>
 </div>
 </body>
 </html>

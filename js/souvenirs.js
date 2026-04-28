@@ -135,30 +135,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalBody    = document.getElementById('modalBody');
     const modalPrice   = document.getElementById('modalPrice');
 
-    function openModal(card) {
-        /* Изображение — сохраняем кнопку расширения перед очисткой */
-        const expandBtnEl = modalImgWrap.querySelector('.souv-modal__expand');
-        const img = card.querySelector('.souv-card__img img');
+    /* ── Общий заполнитель попапа ── */
+    function fillModal(imgSrc, imgAlt, name, price, color, specs, weight) {
         modalImgWrap.innerHTML = '';
-        if (img) {
+        if (imgSrc) {
             const el = document.createElement('img');
-            el.src = img.src;
-            el.alt = img.alt;
+            el.src = imgSrc;
+            el.alt = imgAlt || '';
             modalImgWrap.appendChild(el);
             modalImgWrap.classList.remove('souv-modal__img-wrap--placeholder');
-            if (expandBtnEl) modalImgWrap.appendChild(expandBtnEl);
         } else {
             modalImgWrap.classList.add('souv-modal__img-wrap--placeholder');
         }
 
-        /* Название и цена */
-        modalName.textContent  = card.querySelector('.souv-card__name').textContent;
-        modalPrice.textContent = card.querySelector('.souv-card__price').textContent;
-
-        /* Описание */
-        const color  = card.dataset.color  || '';
-        const specs  = card.dataset.specs  || '';
-        const weight = card.dataset.weight || '';
+        modalName.textContent  = name  || '';
+        modalPrice.textContent = price || '';
 
         let html = '';
         if (color)  html += `<p class="souv-modal__color">Цвет — ${color}</p>`;
@@ -173,17 +164,46 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = 'hidden';
     }
 
+    /* ── Открыть попап из карточки .souv-card (страница сувениров) ── */
+    function openModal(card) {
+        const img    = card.querySelector('.souv-card__img img');
+        const name   = card.querySelector('.souv-card__name')?.textContent || '';
+        const price  = card.querySelector('.souv-card__price')?.textContent || '';
+        fillModal(
+            img ? img.src : null,
+            img ? img.alt : '',
+            name, price,
+            card.dataset.color  || '',
+            card.dataset.specs  || '',
+            card.dataset.weight || ''
+        );
+    }
+
+    /* ── Открыть попап из .souvenir-item (главная страница) ── */
+    function openModalFromItem(item) {
+        const img    = item.querySelector('.souvenir-img');
+        const name   = item.querySelector('.souvenir-name')?.textContent || '';
+        const price  = item.querySelector('.souvenir-price')?.textContent || '';
+        fillModal(
+            img ? img.src : null,
+            img ? img.alt : '',
+            name, price,
+            item.dataset.color  || '',
+            item.dataset.specs  || '',
+            item.dataset.weight || ''
+        );
+    }
+
     function closeModal() {
         modal.hidden = true;
         document.body.style.overflow = '';
     }
 
     /* ══ ПОЛНОЭКРАННЫЙ ПРОСМОТР ФОТО ══ */
-    const fullscreen      = document.getElementById('souvFullscreen');
-    const fullscreenImg   = document.getElementById('souvFullscreenImg');
-    const fullscreenClose = document.getElementById('souvFullscreenClose');
+    const fullscreen        = document.getElementById('souvFullscreen');
+    const fullscreenImg     = document.getElementById('souvFullscreenImg');
+    const fullscreenClose   = document.getElementById('souvFullscreenClose');
     const fullscreenOverlay = document.getElementById('souvFullscreenOverlay');
-    const expandBtn       = document.getElementById('souvModalExpand');
 
     function openFullscreen(src, alt) {
         fullscreenImg.src = src;
@@ -199,26 +219,34 @@ document.addEventListener('DOMContentLoaded', () => {
     if (fullscreen) {
         fullscreenClose.addEventListener('click', closeFullscreen);
         fullscreenOverlay.addEventListener('click', closeFullscreen);
-        document.addEventListener('keydown', e => { if (e.key === 'Escape' && !fullscreen.hidden) closeFullscreen(); });
-    }
-
-    if (expandBtn) {
-        expandBtn.addEventListener('click', () => {
-            const img = modalImgWrap.querySelector('img');
-            if (img) openFullscreen(img.src, img.alt);
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && !fullscreen.hidden) closeFullscreen();
         });
     }
 
     if (modal) {
+        /* Клик по фото в попапе — открыть полноэкранный просмотр */
+        modalImgWrap.addEventListener('click', () => {
+            const img = modalImgWrap.querySelector('img');
+            if (img) openFullscreen(img.src, img.alt);
+        });
+
         modalOverlay.addEventListener('click', closeModal);
         modalClose.addEventListener('click', closeModal);
-        document.addEventListener('keydown', e => { if (e.key === 'Escape' && fullscreen.hidden) closeModal(); });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && !modal.hidden && fullscreen.hidden) closeModal();
+        });
 
-        /* Клик по карточке (включая результаты поиска — через делегирование) */
+        /* Клик по карточке — делегирование для .souv-card и .souvenir-item */
         document.addEventListener('click', e => {
-            if (modal.hidden === false && e.target.closest('#souvModal')) return;
+            /* Клик внутри попапа — игнорируем (кроме overlay/close) */
+            if (!modal.hidden && e.target.closest('#souvModal')) return;
+
             const card = e.target.closest('.souv-card');
-            if (card) openModal(card);
+            if (card) { openModal(card); return; }
+
+            const item = e.target.closest('.souvenir-item');
+            if (item) { openModalFromItem(item); return; }
         });
     }
 

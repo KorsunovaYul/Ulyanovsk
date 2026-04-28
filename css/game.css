@@ -14,26 +14,14 @@
     padding-bottom: 3rem;
 }
 
-/* ── Заголовок страницы (фиксированный, как «История») ── */
+/* ── Заголовок страницы (обычный H1, как на других страницах) ── */
 .game-title {
-    position: fixed;
-    top: 10rem;
-    left: 8.33vw;
-    z-index: 50;
     font-family: 'Arsenal SC', sans-serif;
     font-weight: bold;
     font-size: clamp(3rem, 4.16vw, 5rem);
     color: var(--color-text-primary);
     line-height: 1.1;
-    pointer-events: none;
-    transition: opacity 0.4s ease;
-}
-.game-title.hidden {
-    opacity: 0;
-}
-/* Отступ для контента под фиксированным заголовком */
-.game-hero-grid {
-    margin-top: 6rem;
+    margin-bottom: 2rem;
 }
 
 /* ══════════════════════════════════
@@ -119,9 +107,8 @@
    АДАПТАЦИЯ — МОБИЛЬНЫЙ (≤768px)
 ══════════════════════════════════ */
 @media (max-width: 768px) {
-    .game-main { padding-top: 7rem; }
-    .game-title { font-size: 2rem; top: 6.5rem; }
-    .game-hero-grid { margin-top: 4rem; }
+    .game-main  { padding-top: 7rem; }
+    .game-title { font-size: 2rem; }
 
     .game-hero-grid {
         display: grid;
