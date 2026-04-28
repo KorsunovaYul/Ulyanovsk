@@ -34,13 +34,14 @@
 /* Поисковая строка — 9 колонок, стиль как у кнопок вариантов */
 .souv-search {
     grid-column: 1 / 10;
-    padding: 0.5rem;
+    height: 4.5rem;
+    padding: 0 1.5rem;
     background: #ffffff;
     border: 2px solid var(--color-cta-bg);
     color: var(--color-text-primary);
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 1rem;     /* 16px */
+    font-size: 1.5rem;   /* 24pt */
     outline: none;
     transition: box-shadow 0.15s ease;
 }
@@ -65,14 +66,15 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 0.5rem;
+    height: 4.5rem;
+    padding: 0 1.5rem;
     background-color: var(--color-cta-bg);
     color: #ffffff;
     border: none;
     cursor: pointer;
     font-family: 'Arsenal SC', sans-serif;
     font-weight: bold;
-    font-size: 1rem;     /* 16px */
+    font-size: 1.5rem;   /* 24pt */
     gap: 0.75rem;
     transition: background-color 0.2s ease;
 }
@@ -118,13 +120,13 @@
 .souv-sort-option {
     display: block;
     width: 100%;
-    padding: 0.5rem;
+    padding: 0.875rem 1.5rem;
     background: none;
     border: none;
     text-align: left;
     font-family: 'Arsenal SC', sans-serif;
     font-weight: bold;
-    font-size: 1rem;     /* 16px */
+    font-size: 1.5rem;   /* 24pt */
     color: var(--color-text-primary);
     cursor: pointer;
     transition: background 0.15s ease, color 0.15s ease;
@@ -352,9 +354,10 @@
         gap: 0.75rem;
     }
 
-    .souv-search    { width: 100%; }
+    .souv-search    { width: 100%; height: auto; padding: 0.5rem; font-size: 1rem; }
     .souv-sort-wrap { width: 100%; }
-    .souv-sort-btn  { width: 100%; }
+    .souv-sort-btn  { width: 100%; height: auto; padding: 0.5rem; font-size: 1rem; }
+    .souv-sort-option { padding: 0.5rem; font-size: 1rem; }
 
     /* 4-колоночная сетка, маленькие карточки = 2 кол, большие = 4 */
     .souv-grid {
