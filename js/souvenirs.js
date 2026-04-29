@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalPrice   = document.getElementById('modalPrice');
 
     /* ── Общий заполнитель попапа ── */
-    function fillModal(imgSrc, imgAlt, name, price, color, specs, weight) {
+    function fillModal(imgSrc, imgAlt, name, price, color, specs, weight, description) {
         modalImgWrap.innerHTML = '';
         if (imgSrc) {
             const el = document.createElement('img');
@@ -152,6 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modalPrice.textContent = price || '';
 
         let html = '';
+        if (description) html += `<p class="souv-modal__description">${description}</p>`;
         if (color)  html += `<p class="souv-modal__color">Цвет — ${color}</p>`;
         if (specs) {
             html += `<p class="souv-modal__specs-title">Материал и размеры:</p>`;
@@ -173,9 +174,10 @@ document.addEventListener('DOMContentLoaded', () => {
             img ? img.src : null,
             img ? img.alt : '',
             name, price,
-            card.dataset.color  || '',
-            card.dataset.specs  || '',
-            card.dataset.weight || ''
+            card.dataset.color       || '',
+            card.dataset.specs       || '',
+            card.dataset.weight      || '',
+            card.dataset.description || ''
         );
     }
 

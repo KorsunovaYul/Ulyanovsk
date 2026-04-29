@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
             dot.classList.toggle('timeline-dot--active', i === activeIndex);
         });
 
-        // Мобильный таймлайн (≤768px)
-        if (window.innerWidth <= 768) goToMobBlock(activeIndex);
+        // Мобильный / планшетный таймлайн (≤1000px)
+        if (window.innerWidth <= 1000) goToMobBlock(activeIndex);
     }
 
     // ===== МОЙ МОБИЛЬНЫЙ ТАЙМЛАЙН =====
@@ -164,6 +164,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let stickyReleased = false;
 
     historyScroll.addEventListener('wheel', (e) => {
+        // На мобилке (≤768px) — обычный вертикальный скролл, не перехватываем
+        if (window.innerWidth <= 768) return;
+
         e.preventDefault();
 
         // После отпускания sticky — форвардим дельту в window, не трогаем горизонталь
@@ -203,6 +206,131 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, { passive: false });
 
+    // ===== ВЕРТИКАЛЬНЫЙ ТАЙМЛАЙН (мобилка ≤768px) — 3 слота с анимацией =====
+    const vertTimeline = document.getElementById('histTimelineVert');
+    const vertSlotEls = [
+        document.getElementById('vert-slot-a'),
+        document.getElementById('vert-slot-b'),
+        document.getElementById('vert-slot-c')
+    ];
+    const vertBlockLabels = ['1648', '1769', '1898–1916', '1941–1943', '1965–1970', 'с 1976'];
+    let vertRoles = [0, 1, 2]; // индексы слотов: [текущий, следующий, запасной]
+    let vertActiveIdx = 0;
+
+    function setVertSlot(slotEl, role, label) {
+        ['current', 'next', 'off-top', 'off-bottom'].forEach(r =>
+            slotEl.classList.remove(`timeline-vert-slot--${r}`)
+        );
+        slotEl.classList.add(`timeline-vert-slot--${role}`);
+        if (label !== undefined) {
+            slotEl.querySelector('.timeline-vert-label').textContent = label;
+        }
+    }
+
+    function setVertLast(idx) {
+        vertTimeline.classList.toggle('history-timeline-vert--last', idx === vertBlockLabels.length - 1);
+    }
+
+    function initVertTimeline() {
+        if (!vertTimeline || !vertSlotEls[0]) return;
+        // Без анимации ставим все в off-bottom, затем применяем начальное состояние
+        vertSlotEls.forEach(s => s.classList.add('no-transition'));
+        setVertSlot(vertSlotEls[0], 'off-bottom', vertBlockLabels[0]);
+        setVertSlot(vertSlotEls[1], 'off-bottom', vertBlockLabels[1] || '');
+        setVertSlot(vertSlotEls[2], 'off-bottom', '');
+        vertSlotEls[0].getBoundingClientRect(); // force reflow
+        vertSlotEls.forEach(s => s.classList.remove('no-transition'));
+        setVertSlot(vertSlotEls[0], 'current', vertBlockLabels[0]);
+        setVertSlot(vertSlotEls[1], vertBlockLabels[1] ? 'next' : 'off-bottom', vertBlockLabels[1] || '');
+        vertRoles = [0, 1, 2];
+        vertActiveIdx = 0;
+        setVertLast(0);
+    }
+
+    function updateVertTimeline(newIdx) {
+        if (!vertTimeline || !vertSlotEls[0]) return;
+        if (newIdx === vertActiveIdx) return;
+
+        // Прыжок через несколько блоков — без анимации
+        if (Math.abs(newIdx - vertActiveIdx) > 1) {
+            vertSlotEls.forEach(s => {
+                s.classList.add('no-transition');
+                setVertSlot(s, 'off-bottom', '');
+            });
+            vertSlotEls[0].getBoundingClientRect();
+            vertSlotEls.forEach(s => s.classList.remove('no-transition'));
+            setVertSlot(vertSlotEls[0], 'current', vertBlockLabels[newIdx]);
+            const hasNext = newIdx + 1 < vertBlockLabels.length;
+            setVertSlot(vertSlotEls[1], hasNext ? 'next' : 'off-bottom', vertBlockLabels[newIdx + 1] || '');
+            setVertSlot(vertSlotEls[2], 'off-bottom', '');
+            vertRoles = [0, 1, 2];
+            vertActiveIdx = newIdx;
+            setVertLast(newIdx);
+            return;
+        }
+
+        const isForward = newIdx > vertActiveIdx;
+        const [currIdx, nextIdx, spareIdx] = vertRoles;
+        const currSlot = vertSlotEls[currIdx];
+        const nextSlot = vertSlotEls[nextIdx];
+        const spareSlot = vertSlotEls[spareIdx];
+
+        if (isForward) {
+            // Запасной: мгновенно ставим за нижний край с новой подписью
+            spareSlot.classList.add('no-transition');
+            setVertSlot(spareSlot, 'off-bottom', vertBlockLabels[newIdx + 1] || '');
+            spareSlot.getBoundingClientRect();
+            spareSlot.classList.remove('no-transition');
+            // Текущий уходит вверх, следующий становится текущим, запасной — следующим
+            setVertSlot(currSlot, 'off-top');
+            setVertSlot(nextSlot, 'current');
+            if (newIdx + 1 < vertBlockLabels.length) setVertSlot(spareSlot, 'next');
+            vertRoles = [nextIdx, spareIdx, currIdx];
+        } else {
+            // Запасной: мгновенно ставим за верхний край с подписью нового блока
+            spareSlot.classList.add('no-transition');
+            setVertSlot(spareSlot, 'off-top', vertBlockLabels[newIdx]);
+            spareSlot.getBoundingClientRect();
+            spareSlot.classList.remove('no-transition');
+            // Следующий уходит вниз, текущий становится следующим, запасной — текущим
+            setVertSlot(nextSlot, 'off-bottom');
+            setVertSlot(currSlot, 'next');
+            setVertSlot(spareSlot, 'current');
+            vertRoles = [spareIdx, currIdx, nextIdx];
+        }
+        vertActiveIdx = newIdx;
+        setVertLast(newIdx);
+    }
+
+    // IntersectionObserver для вертикального скролла (мобилка)
+    // Триггер — когда заголовок блока пересекает середину экрана
+    if (vertTimeline) {
+        const ioOptions = {
+            root: null,
+            rootMargin: '-50% 0px -50% 0px', // узкая полоса в центре экрана
+            threshold: 0
+        };
+        const ioCallback = (entries) => {
+            if (window.innerWidth > 768) return;
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const block = entry.target.closest('.history-block');
+                    if (block) {
+                        const idx = parseInt(block.dataset.index, 10);
+                        if (!isNaN(idx)) updateVertTimeline(idx);
+                    }
+                }
+            });
+        };
+        const observer = new IntersectionObserver(ioCallback, ioOptions);
+        // Наблюдаем за заголовками, а не за целыми блоками
+        blocks.forEach(block => {
+            const title = block.querySelector('.history-title');
+            if (title) observer.observe(title);
+        });
+        initVertTimeline();
+    }
+
     // Глобальный скролл — скрываем подпись «История» при небольшом скролле,
     // таймлайн — когда дошли до футера
     window.addEventListener('scroll', () => {
@@ -214,6 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const footerVisible = footer.getBoundingClientRect().top < window.innerHeight;
             timeline.classList.toggle('hidden', footerVisible);
             mobTimelineEl && mobTimelineEl.classList.toggle('hidden', footerVisible);
+            vertTimeline && vertTimeline.classList.toggle('hidden', footerVisible);
         }
     });
 
@@ -224,8 +353,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Клавиши влево/вправо
+    // Клавиши влево/вправо (только десктоп)
     document.addEventListener('keydown', (e) => {
+        if (window.innerWidth <= 768) return;
         if (e.key === 'ArrowRight') {
             e.preventDefault();
             scrollToBlock(currentIndex + 1);
@@ -291,72 +421,4 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('load', updateTitleGradient);
     updateTitleGradient();
 
-    // ===== ЭФФЕКТ ГРАДИЕНТА НА ПОДПИСЯХ ТАЙМЛАЙНА =====
-    // Градиент только когда конкретный <img> реально перекрывает подпись
-    // и по вертикали, и по горизонтали. Без реального фото — без градиента.
-    const timelineLabels = document.querySelectorAll('.timeline-label');
-
-    // data-text нужен для ::before псевдоэлемента (обводка только на белой части)
-    timelineLabels.forEach(lbl => { lbl.dataset.text = lbl.textContent.trim(); });
-    titles.forEach(t => { t.dataset.text = t.textContent.trim(); });
-
-    function updateLabelGradients() {
-        // Только десктоп — мобильный таймлайн отдельный
-        if (window.innerWidth <= 1000) return;
-
-        // Берём картинки только текущего (видимого) блока
-        const blockWidth  = historyScroll.clientWidth || window.innerWidth;
-        const activeIdx   = Math.round(historyScroll.scrollLeft / blockWidth);
-        const activeBlock = blocks[activeIdx] || blocks[0];
-        const blockImages = activeBlock
-            ? Array.from(activeBlock.querySelectorAll('.history-img-wrapper img'))
-            : [];
-
-        timelineLabels.forEach(label => {
-            const lr = label.getBoundingClientRect();
-            if ((lr.bottom - lr.top) <= 0) return;
-
-            // Объединённый прямоугольник пересечения подписи со всеми перекрывающими картинками
-            let ix1 = Infinity, iy1 = Infinity, ix2 = -Infinity, iy2 = -Infinity;
-            let hasOverlap = false;
-
-            blockImages.forEach(img => {
-                const ir = img.getBoundingClientRect();
-
-                // Нет вертикального перекрытия — пропускаем
-                if (lr.bottom <= ir.top || lr.top >= ir.bottom) return;
-
-                // Нет горизонтального перекрытия — пропускаем
-                if (ir.right <= lr.left || ir.left >= lr.right) return;
-
-                // Прямоугольник пересечения
-                const ox1 = Math.max(ir.left, lr.left);
-                const oy1 = Math.max(ir.top,  lr.top);
-                const ox2 = Math.min(ir.right,  lr.right);
-                const oy2 = Math.min(ir.bottom, lr.bottom);
-
-                ix1 = Math.min(ix1, ox1);
-                iy1 = Math.min(iy1, oy1);
-                ix2 = Math.max(ix2, ox2);
-                iy2 = Math.max(iy2, oy2);
-                hasOverlap = true;
-            });
-
-            if (hasOverlap) {
-                label.style.setProperty('--lbl-px', `${(ix1 - lr.left).toFixed(1)}px`);
-                label.style.setProperty('--lbl-py', `${(iy1 - lr.top).toFixed(1)}px`);
-                label.style.setProperty('--lbl-wx', `${(ix2 - ix1).toFixed(1)}px`);
-                label.style.setProperty('--lbl-wy', `${(iy2 - iy1).toFixed(1)}px`);
-                label.classList.add('timeline-label--gradient');
-            } else {
-                label.classList.remove('timeline-label--gradient');
-                ['--lbl-px', '--lbl-py', '--lbl-wx', '--lbl-wy'].forEach(p => label.style.removeProperty(p));
-            }
-        });
-    }
-
-    historyScroll.addEventListener('scroll', updateLabelGradients);
-    window.addEventListener('resize', updateLabelGradients);
-    window.addEventListener('load', updateLabelGradients);
-    updateLabelGradients();
 });

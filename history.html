@@ -102,7 +102,7 @@
         <section class="history-block" data-index="3">
             <div class="history-content">
                 <div class="history-text">
-                    <h1 class="history-title" data-gradient>Эвакуация предприятий и становление промышленного центра</h1>
+                    <h1 class="history-title" data-gradient>Эвакуация предприятий</h1>
                     <p class="history-description">В годы Великой Отечественной войны в Ульяновск были эвакуированы десятки заводов и учреждений, включая часть московского автозавода ЗИС, на базе которого вырос УАЗ. Это событие предопределило превращение города в крупный индустриальный центр и привело к значительному росту населения. В 1943 году была образована Ульяновская область.</p>
                 </div>
 
@@ -140,7 +140,7 @@
         <section class="history-block" data-index="5">
             <div class="history-content">
                 <div class="history-text">
-                    <h1 class="history-title" data-gradient>Строительство Ульяновского авиационного комплекса</h1>
+                    <h1 class="history-title" data-gradient>Авиационный комплекс «Авиастар»</h1>
                     <p class="history-description">Решение о возведении на левом берегу Волги гигантского авиазавода (ныне «Авиастар») и нового жилого района стало важнейшим градостроительным проектом XX века для города. Это закрепило за Ульяновском статус одной из авиационных столиц России и привело к появлению целого «Нового города» с современной инфраструктурой.</p>
                 </div>
 
@@ -210,7 +210,21 @@
         </div>
     </footer>
 
-    <!-- Мобильный таймлайн (только ≤768px) — остаётся fixed снаружи -->
+    <!-- Вертикальный таймлайн (только ≤768px, вертикальная прокрутка) -->
+    <div class="history-timeline-vert" id="histTimelineVert">
+        <div class="timeline-vert-line"></div>
+        <div class="timeline-vert-slot" id="vert-slot-a">
+            <span class="timeline-vert-label"></span>
+        </div>
+        <div class="timeline-vert-slot" id="vert-slot-b">
+            <span class="timeline-vert-label"></span>
+        </div>
+        <div class="timeline-vert-slot" id="vert-slot-c">
+            <span class="timeline-vert-label"></span>
+        </div>
+    </div>
+
+    <!-- Горизонтальный мобильный таймлайн (только ≤768px при горизонт. скролле) — скрыт -->
     <div class="history-timeline-mob">
         <div class="timeline-mob-track">
             <div class="timeline-mob-line"></div>
