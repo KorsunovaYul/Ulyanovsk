@@ -2,8 +2,9 @@
    ЗАГРУЗКА СУВЕНИРОВ ИЗ SUPABASE
    Вставь сюда свои данные из Project Settings → API
 =================================================== */
-const SUPABASE_URL = 'https://vrdhbxicxbhybmgnsmma.supabase.co';       // https://xxxxxx.supabase.co
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZyZGhieGljeGJoeWJtZ25zbW1hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc0ODMwMTUsImV4cCI6MjA5MzA1OTAxNX0.y3CZkGY-beOJ-DLrlEgCuVfDt3lVFvJVXwrlpsr70v0';   // eyJ...
+const SUPABASE_URL = 'https://vrdhbxicxbhybmgnsmma.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZyZGhieGljeGJoeWJtZ25zbW1hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc0ODMwMTUsImV4cCI6MjA5MzA1OTAxNX0.y3CZkGY-beOJ-DLrlEgCuVfDt3lVFvJVXwrlpsr70v0';
+const STORAGE_URL  = `${SUPABASE_URL}/storage/v1/object/public/souvenirs`;
 
 async function loadSouvenirs() {
     try {
@@ -51,7 +52,7 @@ async function loadSouvenirs() {
 
 function buildCard(item) {
     const imgHtml  = item.image_filename
-        ? `<img src="img/souvenirs/${esc(item.image_filename)}" alt="${esc(item.name)}">`
+        ? `<img src="${STORAGE_URL}/${encodeURIComponent(item.image_filename)}" alt="${esc(item.name)}">`
         : '';
     const imgClass = item.image_filename ? '' : ' souv-card__img--placeholder';
 
