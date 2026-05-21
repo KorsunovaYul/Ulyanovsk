@@ -432,7 +432,7 @@
     .geo-map { aspect-ratio: 1066 / 475; position: relative; }
     .geo-map-img { position: absolute; inset: 0; width: 100%; height: 100%; }
 
-    .about-page-title { font-size: 2.5rem; }
+    .about-page-title { font-size: 2.5rem; margin-bottom: 1.5rem; }
 
     /* Портреты — горизонтальный скролл, не переносятся */
     .people-grid {
@@ -474,7 +474,7 @@
 @media (max-width: 768px) {
     .about-main { padding-top: 7rem; }
 
-    .about-page-title  { font-size: 2rem; }
+    .about-page-title  { font-size: 2rem; margin-bottom: 1rem; }
     .about-block-title { font-size: 1.25rem; margin-bottom: 0.5rem; }
 
     /* Погода + часовой пояс — в одну строку, одинаковая высота */
